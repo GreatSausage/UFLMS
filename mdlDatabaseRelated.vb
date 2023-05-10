@@ -138,8 +138,9 @@ Module mdlDatabaseRelated
 
     Public Sub AddBorrower(studentID As String, firstname As String, lastname As String, course As String, address As String, email As String)
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
-        Dim command As New SqlCommand("INSERT INTO tblBorrowers (studentID, firstName, lastName, course, address, emailAddress) VALUES (@studentID, @firstName, @lastName, @course, @address, @emailAddress)", connection)
-        With command.Parameters
+
+        Dim commandOne As New SqlCommand("INSERT INTO tblBorrowers (studentID, firstName, lastName, course, address, emailAddress) VALUES (@studentID, @firstName, @lastName, @course, @address, @emailAddress)", connection)
+        With commandOne.Parameters
             .AddWithValue("@studentID", studentID)
             .AddWithValue("@firstName", firstname)
             .AddWithValue("@lastName", lastname)
@@ -147,9 +148,20 @@ Module mdlDatabaseRelated
             .AddWithValue("@address", address)
             .AddWithValue("@emailAddress", email)
         End With
-        command.ExecuteNonQuery()
+        commandOne.ExecuteNonQuery()
+
+        Dim commandTwo As New SqlCommand("INSERT INTO tblBorrowerHistory (studentID, firstName, lastName, course, address, emailAddress) VALUES (@studentID, @firstName, @lastName, @course, @address, @emailAddress)", connection)
+        With commandTwo.Parameters
+            .AddWithValue("@studentID", studentID)
+            .AddWithValue("@firstName", firstname)
+            .AddWithValue("@lastName", lastname)
+            .AddWithValue("@course", course)
+            .AddWithValue("@address", address)
+            .AddWithValue("@emailAddress", email)
+        End With
+        commandTwo.ExecuteNonQuery()
         connection.Close()
-        MsgBox("Created Successfully")
+        MessageBox.Show("Borrower added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Public Sub SearchBorrowers(dataGridView As DataGridView, searchKeyword As String)
