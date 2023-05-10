@@ -1,4 +1,6 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Web
+
 Module mdlDatabaseRelated
 
 
@@ -260,6 +262,31 @@ Module mdlDatabaseRelated
 
 
 #Region "MANAGE BOOK FORM METHOD"
+
+    Public Sub DisplayByGenre()
+        Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
+        Dim commandText As String = "SELECT isbn, bookAuthor, bookTitle FROM tblBooks"
+        Select Case FrmManageBooks.TxtGenre.Text
+            Case "Computer Studies"
+                commandText += " WHERE bookGenre = 'Computer Studies'"
+            Case "Business Administration"
+                commandText += " WHERE bookGenre = 'Business Administration'"
+            Case "Education"
+                commandText += " WHERE bookGenre = 'Education'"
+            Case "Hospitality Management"
+                commandText += " WHERE bookGenre = 'Hospitality Management'"
+            Case "All"
+                commandText = commandText
+            Case "Others"
+                commandText += " WHERE bookGenre = 'Others'"
+        End Select
+        Dim command As New SqlCommand(commandText, connection)
+        adapter = New SqlDataAdapter(command)
+        dataset = New DataSet
+        adapter.Fill(dataset)
+        FrmManageBooks.DisplayDatagrid.DataSource = dataset.Tables(0)
+        connection.Close()
+    End Sub
     Public Sub DisplayByAvailability(isAvailable As String, datagridview As DataGridView)
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
         Dim commandText As String = "SELECT isbn, bookAuthor, bookTitle FROM tblBooks"
@@ -306,13 +333,25 @@ Module mdlDatabaseRelated
 
     Public Sub ImportBooks(isbn As String, author As String, title As String)
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
-        Dim command As New SqlCommand("INSERT INTO tblBooks (isbn, bookAuthor, bookTitle, availability) VALUES (@isbn, @bookAuthor, @bookTitle, @availability)", connection)
+        Dim command As New SqlCommand("INSERT INTO tblBooks (isbn, bookAuthor, bookTitle, availability, bookGenre) VALUES (@isbn, @bookAuthor, @bookTitle, @availability, @bookGenre)", connection)
         With command.Parameters
             .AddWithValue("@isbn", isbn)
             .AddWithValue("@bookAuthor", author)
             .AddWithValue("@bookTitle", title)
             .AddWithValue("@availability", 1)
         End With
+        Select Case FrmAddBook.TxtGenre.Text
+            Case "Computer Studies"
+                command.Parameters.AddWithValue("@bookGenre", FrmAddBook.TxtGenre.Text)
+            Case "Business Administration"
+                command.Parameters.AddWithValue("@bookGenre", FrmAddBook.TxtGenre.Text)
+            Case "Hospitality Management"
+                command.Parameters.AddWithValue("@bookGenre", FrmAddBook.TxtGenre.Text)
+            Case "Education"
+                command.Parameters.AddWithValue("@bookGenre", FrmAddBook.TxtGenre.Text)
+            Case "Others"
+                command.Parameters.AddWithValue("@bookGenre", FrmAddBook.TxtGenre.Text)
+        End Select
         command.ExecuteNonQuery()
         connection.Close()
         MessageBox.Show("Book has been added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -328,6 +367,7 @@ Module mdlDatabaseRelated
             command.ExecuteNonQuery()
             connection.Close()
             MessageBox.Show("Record deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            BooksAvailability("tblBooks", FrmDashboard.AvailableBooks, 1)
         End If
     End Sub
 
@@ -452,6 +492,7 @@ Module mdlDatabaseRelated
 
             MessageBox.Show("Book has been returned successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             connection.Close()
+            DisplayAvailableBooks(FrmBorrowerSetup.DisplayDataGrid)
             FrmReturnedSetup.TxtStudentID.Text = ""
             FrmReturnedSetup.TxtFirstname.Text = ""
             FrmReturnedSetup.TxtLastname.Text = ""

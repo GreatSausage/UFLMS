@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmAddBook
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FrmAddBook
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmAddBook))
@@ -38,6 +38,8 @@ Partial Class FrmAddBook
         Me.Guna2Panel6 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.BtnCreate = New Guna.UI2.WinForms.Guna2Button()
+        Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.TxtGenre = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -89,7 +91,7 @@ Partial Class FrmAddBook
         Me.Guna2Panel8.Dock = System.Windows.Forms.DockStyle.Right
         Me.Guna2Panel8.Location = New System.Drawing.Point(415, 48)
         Me.Guna2Panel8.Name = "Guna2Panel8"
-        Me.Guna2Panel8.Size = New System.Drawing.Size(385, 302)
+        Me.Guna2Panel8.Size = New System.Drawing.Size(385, 322)
         Me.Guna2Panel8.TabIndex = 9
         '
         'Panel2
@@ -97,7 +99,7 @@ Partial Class FrmAddBook
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel2.Location = New System.Drawing.Point(0, 48)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(12, 302)
+        Me.Panel2.Size = New System.Drawing.Size(12, 322)
         Me.Panel2.TabIndex = 16
         '
         'TxtTitle
@@ -202,7 +204,7 @@ Partial Class FrmAddBook
         'Panel3
         '
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel3.Location = New System.Drawing.Point(12, 340)
+        Me.Panel3.Location = New System.Drawing.Point(12, 360)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(403, 10)
         Me.Panel3.TabIndex = 53
@@ -217,18 +219,47 @@ Partial Class FrmAddBook
         Me.BtnCreate.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.BtnCreate.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.BtnCreate.ForeColor = System.Drawing.Color.White
-        Me.BtnCreate.Location = New System.Drawing.Point(12, 296)
+        Me.BtnCreate.Location = New System.Drawing.Point(12, 316)
         Me.BtnCreate.Name = "BtnCreate"
         Me.BtnCreate.Size = New System.Drawing.Size(403, 44)
         Me.BtnCreate.TabIndex = 54
         Me.BtnCreate.Text = "IMPORT"
+        '
+        'Guna2Panel2
+        '
+        Me.Guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Guna2Panel2.Location = New System.Drawing.Point(12, 237)
+        Me.Guna2Panel2.Name = "Guna2Panel2"
+        Me.Guna2Panel2.Size = New System.Drawing.Size(403, 20)
+        Me.Guna2Panel2.TabIndex = 55
+        '
+        'TxtGenre
+        '
+        Me.TxtGenre.BackColor = System.Drawing.Color.Transparent
+        Me.TxtGenre.BorderColor = System.Drawing.Color.Black
+        Me.TxtGenre.BorderRadius = 5
+        Me.TxtGenre.Dock = System.Windows.Forms.DockStyle.Top
+        Me.TxtGenre.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.TxtGenre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.TxtGenre.FocusedColor = System.Drawing.Color.Black
+        Me.TxtGenre.FocusedState.BorderColor = System.Drawing.Color.Black
+        Me.TxtGenre.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.TxtGenre.ForeColor = System.Drawing.Color.Black
+        Me.TxtGenre.ItemHeight = 30
+        Me.TxtGenre.Items.AddRange(New Object() {"Computer Studies", "Business Administration", "Hospitality Management", "Education", "Others"})
+        Me.TxtGenre.Location = New System.Drawing.Point(12, 257)
+        Me.TxtGenre.Name = "TxtGenre"
+        Me.TxtGenre.Size = New System.Drawing.Size(403, 36)
+        Me.TxtGenre.TabIndex = 56
         '
         'FrmAddBook
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(800, 350)
+        Me.ClientSize = New System.Drawing.Size(800, 370)
+        Me.Controls.Add(Me.TxtGenre)
+        Me.Controls.Add(Me.Guna2Panel2)
         Me.Controls.Add(Me.BtnCreate)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.TxtTitle)
@@ -265,4 +296,6 @@ Partial Class FrmAddBook
     Friend WithEvents Guna2Panel6 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Panel2 As Panel
     Friend WithEvents BtnCreate As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents TxtGenre As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents Guna2Panel2 As Guna.UI2.WinForms.Guna2Panel
 End Class

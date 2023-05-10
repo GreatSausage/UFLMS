@@ -35,4 +35,8 @@
     Private Sub TxtSearch_TextChanged_1(sender As Object, e As EventArgs) Handles TxtSearch.TextChanged
         SearchBooks(DisplayDatagrid, TxtSearch.Text)
     End Sub
+
+    Private Sub TxtGenre_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TxtGenre.SelectedIndexChanged
+        DisplayByGenre()
+    End Sub
 End Class

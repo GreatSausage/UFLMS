@@ -311,6 +311,7 @@ Partial Class FrmLibrarianInfo
         Me.TxtID.Name = "TxtID"
         Me.TxtID.Size = New System.Drawing.Size(100, 22)
         Me.TxtID.TabIndex = 0
+        Me.TxtID.Visible = False
         '
         'FrmLibrarianInfo
         '
