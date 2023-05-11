@@ -6,6 +6,8 @@
         RecordCount("tblBooks", BooksCount)
         BooksAvailability("tblBooks", AvailableBooks, 1)
         BooksAvailability("tblBooks", BorrowedBooks, 0)
+        RecordCount("tblDamagedBooks", DamagedCount)
+        RecordCount("tblLostBooks", LostCount)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick

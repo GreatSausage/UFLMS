@@ -62,6 +62,17 @@ Partial Class FrmDashboard
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Guna2Panel14 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Panel11 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.Guna2Panel26 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.DamagedCount = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Guna2Panel27 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.Guna2Panel28 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.LostCount = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Guna2Panel29 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.Guna2Panel30 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.OverdueCount = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.Guna2Panel1.SuspendLayout()
         Me.Guna2Panel3.SuspendLayout()
         Me.Guna2Panel5.SuspendLayout()
@@ -73,6 +84,9 @@ Partial Class FrmDashboard
         Me.Guna2Panel22.SuspendLayout()
         Me.Guna2Panel20.SuspendLayout()
         Me.Guna2Panel17.SuspendLayout()
+        Me.Guna2Panel26.SuspendLayout()
+        Me.Guna2Panel28.SuspendLayout()
+        Me.Guna2Panel30.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2Panel1
@@ -168,6 +182,9 @@ Partial Class FrmDashboard
         'Guna2Panel9
         '
         Me.Guna2Panel9.BackColor = System.Drawing.Color.White
+        Me.Guna2Panel9.Controls.Add(Me.Guna2Panel30)
+        Me.Guna2Panel9.Controls.Add(Me.Guna2Panel29)
+        Me.Guna2Panel9.Controls.Add(Me.Guna2Panel28)
         Me.Guna2Panel9.Controls.Add(Me.Guna2Panel16)
         Me.Guna2Panel9.Controls.Add(Me.Guna2Panel13)
         Me.Guna2Panel9.Dock = System.Windows.Forms.DockStyle.Top
@@ -204,6 +221,8 @@ Partial Class FrmDashboard
         'Guna2Panel8
         '
         Me.Guna2Panel8.BackColor = System.Drawing.Color.White
+        Me.Guna2Panel8.Controls.Add(Me.Guna2Panel26)
+        Me.Guna2Panel8.Controls.Add(Me.Guna2Panel27)
         Me.Guna2Panel8.Controls.Add(Me.Guna2Panel25)
         Me.Guna2Panel8.Controls.Add(Me.Guna2Panel24)
         Me.Guna2Panel8.Controls.Add(Me.Guna2Panel23)
@@ -477,6 +496,124 @@ Partial Class FrmDashboard
         Me.Guna2Panel11.Size = New System.Drawing.Size(120, 149)
         Me.Guna2Panel11.TabIndex = 0
         '
+        'Guna2Panel26
+        '
+        Me.Guna2Panel26.BackColor = System.Drawing.Color.FromArgb(CType(CType(194, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(22, Byte), Integer))
+        Me.Guna2Panel26.Controls.Add(Me.DamagedCount)
+        Me.Guna2Panel26.Controls.Add(Me.Label6)
+        Me.Guna2Panel26.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Guna2Panel26.Location = New System.Drawing.Point(840, 0)
+        Me.Guna2Panel26.Name = "Guna2Panel26"
+        Me.Guna2Panel26.Size = New System.Drawing.Size(350, 149)
+        Me.Guna2Panel26.TabIndex = 7
+        '
+        'DamagedCount
+        '
+        Me.DamagedCount.Dock = System.Windows.Forms.DockStyle.Top
+        Me.DamagedCount.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DamagedCount.ForeColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(242, Byte), Integer))
+        Me.DamagedCount.Location = New System.Drawing.Point(0, 0)
+        Me.DamagedCount.Name = "DamagedCount"
+        Me.DamagedCount.Size = New System.Drawing.Size(350, 40)
+        Me.DamagedCount.TabIndex = 1
+        Me.DamagedCount.Text = "0"
+        '
+        'Label6
+        '
+        Me.Label6.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(242, Byte), Integer))
+        Me.Label6.Location = New System.Drawing.Point(0, 109)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(350, 40)
+        Me.Label6.TabIndex = 0
+        Me.Label6.Text = "DAMAGED BOOKS"
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.BottomLeft
+        '
+        'Guna2Panel27
+        '
+        Me.Guna2Panel27.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Guna2Panel27.Location = New System.Drawing.Point(830, 0)
+        Me.Guna2Panel27.Name = "Guna2Panel27"
+        Me.Guna2Panel27.Size = New System.Drawing.Size(10, 149)
+        Me.Guna2Panel27.TabIndex = 6
+        '
+        'Guna2Panel28
+        '
+        Me.Guna2Panel28.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(159, Byte), Integer), CType(CType(26, Byte), Integer))
+        Me.Guna2Panel28.Controls.Add(Me.LostCount)
+        Me.Guna2Panel28.Controls.Add(Me.Label9)
+        Me.Guna2Panel28.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Guna2Panel28.Location = New System.Drawing.Point(120, 0)
+        Me.Guna2Panel28.Name = "Guna2Panel28"
+        Me.Guna2Panel28.Size = New System.Drawing.Size(350, 149)
+        Me.Guna2Panel28.TabIndex = 8
+        '
+        'LostCount
+        '
+        Me.LostCount.Dock = System.Windows.Forms.DockStyle.Top
+        Me.LostCount.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LostCount.ForeColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(242, Byte), Integer))
+        Me.LostCount.Location = New System.Drawing.Point(0, 0)
+        Me.LostCount.Name = "LostCount"
+        Me.LostCount.Size = New System.Drawing.Size(350, 40)
+        Me.LostCount.TabIndex = 1
+        Me.LostCount.Text = "0"
+        '
+        'Label9
+        '
+        Me.Label9.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(242, Byte), Integer))
+        Me.Label9.Location = New System.Drawing.Point(0, 109)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(350, 40)
+        Me.Label9.TabIndex = 0
+        Me.Label9.Text = "LOST BOOKS"
+        Me.Label9.TextAlign = System.Drawing.ContentAlignment.BottomLeft
+        '
+        'Guna2Panel29
+        '
+        Me.Guna2Panel29.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Guna2Panel29.Location = New System.Drawing.Point(470, 0)
+        Me.Guna2Panel29.Name = "Guna2Panel29"
+        Me.Guna2Panel29.Size = New System.Drawing.Size(10, 149)
+        Me.Guna2Panel29.TabIndex = 9
+        '
+        'Guna2Panel30
+        '
+        Me.Guna2Panel30.BackColor = System.Drawing.Color.FromArgb(CType(CType(109, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(79, Byte), Integer))
+        Me.Guna2Panel30.Controls.Add(Me.OverdueCount)
+        Me.Guna2Panel30.Controls.Add(Me.Label11)
+        Me.Guna2Panel30.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Guna2Panel30.Location = New System.Drawing.Point(480, 0)
+        Me.Guna2Panel30.Name = "Guna2Panel30"
+        Me.Guna2Panel30.Size = New System.Drawing.Size(350, 149)
+        Me.Guna2Panel30.TabIndex = 10
+        '
+        'OverdueCount
+        '
+        Me.OverdueCount.Dock = System.Windows.Forms.DockStyle.Top
+        Me.OverdueCount.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OverdueCount.ForeColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(242, Byte), Integer))
+        Me.OverdueCount.Location = New System.Drawing.Point(0, 0)
+        Me.OverdueCount.Name = "OverdueCount"
+        Me.OverdueCount.Size = New System.Drawing.Size(350, 40)
+        Me.OverdueCount.TabIndex = 1
+        Me.OverdueCount.Text = "0"
+        '
+        'Label11
+        '
+        Me.Label11.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Label11.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(242, Byte), Integer), CType(CType(242, Byte), Integer), CType(CType(242, Byte), Integer))
+        Me.Label11.Location = New System.Drawing.Point(0, 109)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(350, 40)
+        Me.Label11.TabIndex = 0
+        Me.Label11.Text = "OVERDUE"
+        Me.Label11.TextAlign = System.Drawing.ContentAlignment.BottomLeft
+        '
         'FrmDashboard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 28.0!)
@@ -503,6 +640,9 @@ Partial Class FrmDashboard
         Me.Guna2Panel22.ResumeLayout(False)
         Me.Guna2Panel20.ResumeLayout(False)
         Me.Guna2Panel17.ResumeLayout(False)
+        Me.Guna2Panel26.ResumeLayout(False)
+        Me.Guna2Panel28.ResumeLayout(False)
+        Me.Guna2Panel30.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -546,4 +686,15 @@ Partial Class FrmDashboard
     Friend WithEvents BorrowedBooks As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Guna2Panel24 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents Guna2Panel30 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents OverdueCount As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Guna2Panel29 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents Guna2Panel28 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents LostCount As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Guna2Panel26 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents DamagedCount As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Guna2Panel27 As Guna.UI2.WinForms.Guna2Panel
 End Class
