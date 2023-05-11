@@ -560,6 +560,7 @@ Module mdlDatabaseRelated
         connection.Close()
         DisplayAvailableBooks(FrmBorrowerSetup.DisplayDataGrid)
         DisplayReturnHistory(FrmHistory.DisplayDatagrid)
+        DisplayOverdue()
 
         FrmReturnedSetup.TxtStudentID.Text = ""
         FrmReturnedSetup.TxtFirstname.Text = ""
@@ -710,6 +711,8 @@ Module mdlDatabaseRelated
                 DisplayBookCreation(FrmHistory.DisplayDatagrid)
             Case 7
                 DisplayDeletedBooks(FrmHistory.DisplayDatagrid)
+            Case 8
+                DisplayOverdueBooks(FrmHistory.DisplayDatagrid)
         End Select
     End Sub
 
@@ -791,6 +794,18 @@ Module mdlDatabaseRelated
     Public Sub DisplayDeletedBooks(datagridview As DataGridView)
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
         Dim command As New SqlCommand("SELECT * FROM tblDeletedBooks", connection)
+        adapter = New SqlDataAdapter(command)
+        dataset = New DataSet
+        adapter.Fill(dataset)
+        datagridview.DataSource = dataset.Tables(0)
+        connection.Close()
+    End Sub
+
+    Public Sub DisplayOverdueBooks(datagridview As DataGridView)
+        Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
+        Dim command As New SqlCommand("SELECT b.isbn, b.bookTitle, b.bookAuthor, bo.studentID, bo.firstName, bo.lastName, bo.course, br.dateBorrowed, br.dueDate 
+        FROM tblBorrowedBooks br
+        JOIN tblBooks b ON br.isbn = b.isbn Join tblBorrowers bo ON br.studentID = bo.studentID WHERE dueDate < GETDATE()", connection)
         adapter = New SqlDataAdapter(command)
         dataset = New DataSet
         adapter.Fill(dataset)
