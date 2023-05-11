@@ -4,7 +4,7 @@
     End Sub
 
     Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles BtnDelete.Click
-        DeleteBooks(CLng(TxtIsbn.Text))
+        DeleteBooks(CLng(TxtIsbn.Text), TxtBookAuthor.Text, TxtBookTitle.Text)
         Me.Close()
         DisplayByAvailability("ALL", FrmManageBooks.DisplayDatagrid)
         RecordCount("tblBooks", FrmDashboard.BooksCount)

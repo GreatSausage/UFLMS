@@ -26,6 +26,8 @@ Partial Class FrmHistory
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TxtDisplay = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Panel5 = New Guna.UI2.WinForms.Guna2Panel()
@@ -34,17 +36,10 @@ Partial Class FrmHistory
         Me.Guna2Panel9 = New Guna.UI2.WinForms.Guna2Panel()
         Me.BtnDeleteAll = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel10 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.Guna2Panel8 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.LinkLabel3 = New System.Windows.Forms.LinkLabel()
-        Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.DisplayDatagrid = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.LinkLabel4 = New System.Windows.Forms.LinkLabel()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.TxtDisplay = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.Guna2Panel8 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Panel1.SuspendLayout()
         Me.Guna2Panel9.SuspendLayout()
-        Me.Guna2Panel8.SuspendLayout()
         CType(Me.DisplayDatagrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -60,6 +55,32 @@ Partial Class FrmHistory
         Me.Guna2Panel1.Name = "Guna2Panel1"
         Me.Guna2Panel1.Size = New System.Drawing.Size(1302, 91)
         Me.Guna2Panel1.TabIndex = 2
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(1002, 63)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(80, 28)
+        Me.Label2.TabIndex = 4
+        Me.Label2.Text = "Display:"
+        '
+        'TxtDisplay
+        '
+        Me.TxtDisplay.BackColor = System.Drawing.Color.Transparent
+        Me.TxtDisplay.BorderColor = System.Drawing.Color.Black
+        Me.TxtDisplay.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.TxtDisplay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.TxtDisplay.FocusedColor = System.Drawing.Color.Black
+        Me.TxtDisplay.FocusedState.BorderColor = System.Drawing.Color.Black
+        Me.TxtDisplay.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.TxtDisplay.ForeColor = System.Drawing.Color.Black
+        Me.TxtDisplay.ItemHeight = 30
+        Me.TxtDisplay.Items.AddRange(New Object() {"Borrow History", "Return History", "Borrower Created", "Deleted Borrower", "Librarian Created", "Deleted Librarian", "Book Imports", "Book Deleted", "Overdue Books"})
+        Me.TxtDisplay.Location = New System.Drawing.Point(1100, 54)
+        Me.TxtDisplay.Name = "TxtDisplay"
+        Me.TxtDisplay.Size = New System.Drawing.Size(187, 36)
+        Me.TxtDisplay.TabIndex = 3
         '
         'Label1
         '
@@ -141,69 +162,6 @@ Partial Class FrmHistory
         Me.Guna2Panel10.Size = New System.Drawing.Size(1282, 10)
         Me.Guna2Panel10.TabIndex = 0
         '
-        'Guna2Panel8
-        '
-        Me.Guna2Panel8.Controls.Add(Me.LinkLabel4)
-        Me.Guna2Panel8.Controls.Add(Me.LinkLabel3)
-        Me.Guna2Panel8.Controls.Add(Me.LinkLabel2)
-        Me.Guna2Panel8.Controls.Add(Me.LinkLabel1)
-        Me.Guna2Panel8.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Guna2Panel8.Location = New System.Drawing.Point(10, 91)
-        Me.Guna2Panel8.Name = "Guna2Panel8"
-        Me.Guna2Panel8.Size = New System.Drawing.Size(1282, 30)
-        Me.Guna2Panel8.TabIndex = 12
-        '
-        'LinkLabel3
-        '
-        Me.LinkLabel3.ActiveLinkColor = System.Drawing.Color.Black
-        Me.LinkLabel3.Dock = System.Windows.Forms.DockStyle.Left
-        Me.LinkLabel3.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel3.LinkArea = New System.Windows.Forms.LinkArea(1, 16)
-        Me.LinkLabel3.LinkColor = System.Drawing.Color.Black
-        Me.LinkLabel3.Location = New System.Drawing.Point(288, 0)
-        Me.LinkLabel3.Name = "LinkLabel3"
-        Me.LinkLabel3.Size = New System.Drawing.Size(174, 30)
-        Me.LinkLabel3.TabIndex = 3
-        Me.LinkLabel3.TabStop = True
-        Me.LinkLabel3.Text = " Borrower Created"
-        Me.LinkLabel3.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.LinkLabel3.UseCompatibleTextRendering = True
-        Me.LinkLabel3.VisitedLinkColor = System.Drawing.Color.Black
-        '
-        'LinkLabel2
-        '
-        Me.LinkLabel2.ActiveLinkColor = System.Drawing.Color.Black
-        Me.LinkLabel2.Dock = System.Windows.Forms.DockStyle.Left
-        Me.LinkLabel2.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel2.LinkArea = New System.Windows.Forms.LinkArea(1, 15)
-        Me.LinkLabel2.LinkColor = System.Drawing.Color.Black
-        Me.LinkLabel2.Location = New System.Drawing.Point(144, 0)
-        Me.LinkLabel2.Name = "LinkLabel2"
-        Me.LinkLabel2.Size = New System.Drawing.Size(144, 30)
-        Me.LinkLabel2.TabIndex = 2
-        Me.LinkLabel2.TabStop = True
-        Me.LinkLabel2.Text = " Return History"
-        Me.LinkLabel2.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.LinkLabel2.UseCompatibleTextRendering = True
-        Me.LinkLabel2.VisitedLinkColor = System.Drawing.Color.Black
-        '
-        'LinkLabel1
-        '
-        Me.LinkLabel1.ActiveLinkColor = System.Drawing.Color.Black
-        Me.LinkLabel1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.LinkLabel1.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel1.LinkArea = New System.Windows.Forms.LinkArea(1, 15)
-        Me.LinkLabel1.LinkColor = System.Drawing.Color.Black
-        Me.LinkLabel1.Location = New System.Drawing.Point(0, 0)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(144, 30)
-        Me.LinkLabel1.TabIndex = 0
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = " Borrow History"
-        Me.LinkLabel1.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.LinkLabel1.UseCompatibleTextRendering = True
-        Me.LinkLabel1.VisitedLinkColor = System.Drawing.Color.Black
-        '
         'DisplayDatagrid
         '
         Me.DisplayDatagrid.AllowUserToAddRows = False
@@ -231,7 +189,7 @@ Partial Class FrmHistory
         Me.DisplayDatagrid.DefaultCellStyle = DataGridViewCellStyle3
         Me.DisplayDatagrid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DisplayDatagrid.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DisplayDatagrid.Location = New System.Drawing.Point(10, 121)
+        Me.DisplayDatagrid.Location = New System.Drawing.Point(10, 106)
         Me.DisplayDatagrid.MultiSelect = False
         Me.DisplayDatagrid.Name = "DisplayDatagrid"
         Me.DisplayDatagrid.ReadOnly = True
@@ -239,7 +197,7 @@ Partial Class FrmHistory
         Me.DisplayDatagrid.RowHeadersWidth = 51
         Me.DisplayDatagrid.RowTemplate.Height = 30
         Me.DisplayDatagrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DisplayDatagrid.Size = New System.Drawing.Size(1282, 680)
+        Me.DisplayDatagrid.Size = New System.Drawing.Size(1282, 695)
         Me.DisplayDatagrid.TabIndex = 13
         Me.DisplayDatagrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
         Me.DisplayDatagrid.ThemeStyle.AlternatingRowsStyle.Font = Nothing
@@ -263,48 +221,13 @@ Partial Class FrmHistory
         Me.DisplayDatagrid.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DisplayDatagrid.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
-        'LinkLabel4
+        'Guna2Panel8
         '
-        Me.LinkLabel4.ActiveLinkColor = System.Drawing.Color.Black
-        Me.LinkLabel4.Dock = System.Windows.Forms.DockStyle.Left
-        Me.LinkLabel4.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel4.LinkArea = New System.Windows.Forms.LinkArea(1, 16)
-        Me.LinkLabel4.LinkColor = System.Drawing.Color.Black
-        Me.LinkLabel4.Location = New System.Drawing.Point(462, 0)
-        Me.LinkLabel4.Name = "LinkLabel4"
-        Me.LinkLabel4.Size = New System.Drawing.Size(174, 30)
-        Me.LinkLabel4.TabIndex = 4
-        Me.LinkLabel4.TabStop = True
-        Me.LinkLabel4.Text = " Deleted Borrower"
-        Me.LinkLabel4.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.LinkLabel4.UseCompatibleTextRendering = True
-        Me.LinkLabel4.VisitedLinkColor = System.Drawing.Color.Black
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(1002, 63)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(80, 28)
-        Me.Label2.TabIndex = 4
-        Me.Label2.Text = "Display:"
-        '
-        'TxtDisplay
-        '
-        Me.TxtDisplay.BackColor = System.Drawing.Color.Transparent
-        Me.TxtDisplay.BorderColor = System.Drawing.Color.Black
-        Me.TxtDisplay.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.TxtDisplay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.TxtDisplay.FocusedColor = System.Drawing.Color.Black
-        Me.TxtDisplay.FocusedState.BorderColor = System.Drawing.Color.Black
-        Me.TxtDisplay.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.TxtDisplay.ForeColor = System.Drawing.Color.Black
-        Me.TxtDisplay.ItemHeight = 30
-        Me.TxtDisplay.Items.AddRange(New Object() {"Borrow History", "Return History", "Borrower Created", "Deleted Borrower", "Librarian Created", "Deleted Librarian", "Book Imports", "Book Deleted", "Overdue Books"})
-        Me.TxtDisplay.Location = New System.Drawing.Point(1100, 54)
-        Me.TxtDisplay.Name = "TxtDisplay"
-        Me.TxtDisplay.Size = New System.Drawing.Size(187, 36)
-        Me.TxtDisplay.TabIndex = 3
+        Me.Guna2Panel8.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Guna2Panel8.Location = New System.Drawing.Point(10, 91)
+        Me.Guna2Panel8.Name = "Guna2Panel8"
+        Me.Guna2Panel8.Size = New System.Drawing.Size(1282, 15)
+        Me.Guna2Panel8.TabIndex = 12
         '
         'FrmHistory
         '
@@ -328,7 +251,6 @@ Partial Class FrmHistory
         Me.Guna2Panel1.ResumeLayout(False)
         Me.Guna2Panel1.PerformLayout()
         Me.Guna2Panel9.ResumeLayout(False)
-        Me.Guna2Panel8.ResumeLayout(False)
         CType(Me.DisplayDatagrid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -343,12 +265,8 @@ Partial Class FrmHistory
     Friend WithEvents Guna2Panel9 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents BtnDeleteAll As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Panel10 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2Panel8 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents LinkLabel1 As LinkLabel
-    Friend WithEvents LinkLabel2 As LinkLabel
     Friend WithEvents DisplayDatagrid As Guna.UI2.WinForms.Guna2DataGridView
-    Friend WithEvents LinkLabel3 As LinkLabel
-    Friend WithEvents LinkLabel4 As LinkLabel
     Friend WithEvents Label2 As Label
     Friend WithEvents TxtDisplay As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents Guna2Panel8 As Guna.UI2.WinForms.Guna2Panel
 End Class
