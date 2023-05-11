@@ -22,9 +22,9 @@ Partial Class FrmHistory
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
@@ -38,6 +38,7 @@ Partial Class FrmHistory
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.DisplayDatagrid = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.LinkLabel3 = New System.Windows.Forms.LinkLabel()
         Me.Guna2Panel1.SuspendLayout()
         Me.Guna2Panel9.SuspendLayout()
         Me.Guna2Panel8.SuspendLayout()
@@ -137,6 +138,7 @@ Partial Class FrmHistory
         '
         'Guna2Panel8
         '
+        Me.Guna2Panel8.Controls.Add(Me.LinkLabel3)
         Me.Guna2Panel8.Controls.Add(Me.LinkLabel2)
         Me.Guna2Panel8.Controls.Add(Me.LinkLabel1)
         Me.Guna2Panel8.Dock = System.Windows.Forms.DockStyle.Top
@@ -150,7 +152,6 @@ Partial Class FrmHistory
         Me.LinkLabel2.ActiveLinkColor = System.Drawing.Color.Black
         Me.LinkLabel2.Dock = System.Windows.Forms.DockStyle.Left
         Me.LinkLabel2.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LinkLabel2.LinkArea = New System.Windows.Forms.LinkArea(1, 15)
         Me.LinkLabel2.LinkColor = System.Drawing.Color.Black
         Me.LinkLabel2.Location = New System.Drawing.Point(144, 0)
         Me.LinkLabel2.Name = "LinkLabel2"
@@ -159,7 +160,6 @@ Partial Class FrmHistory
         Me.LinkLabel2.TabStop = True
         Me.LinkLabel2.Text = " Return History"
         Me.LinkLabel2.TextAlign = System.Drawing.ContentAlignment.BottomLeft
-        Me.LinkLabel2.UseCompatibleTextRendering = True
         Me.LinkLabel2.VisitedLinkColor = System.Drawing.Color.Black
         '
         'LinkLabel1
@@ -185,25 +185,25 @@ Partial Class FrmHistory
         Me.DisplayDatagrid.AllowUserToDeleteRows = False
         Me.DisplayDatagrid.AllowUserToResizeColumns = False
         Me.DisplayDatagrid.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        Me.DisplayDatagrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DisplayDatagrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        Me.DisplayDatagrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DisplayDatagrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DisplayDatagrid.ColumnHeadersHeight = 25
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DisplayDatagrid.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DisplayDatagrid.DefaultCellStyle = DataGridViewCellStyle6
         Me.DisplayDatagrid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DisplayDatagrid.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DisplayDatagrid.Location = New System.Drawing.Point(10, 121)
@@ -237,6 +237,23 @@ Partial Class FrmHistory
         Me.DisplayDatagrid.ThemeStyle.RowsStyle.Height = 30
         Me.DisplayDatagrid.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DisplayDatagrid.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        '
+        'LinkLabel3
+        '
+        Me.LinkLabel3.ActiveLinkColor = System.Drawing.Color.Black
+        Me.LinkLabel3.Dock = System.Windows.Forms.DockStyle.Left
+        Me.LinkLabel3.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabel3.LinkArea = New System.Windows.Forms.LinkArea(1, 16)
+        Me.LinkLabel3.LinkColor = System.Drawing.Color.Black
+        Me.LinkLabel3.Location = New System.Drawing.Point(288, 0)
+        Me.LinkLabel3.Name = "LinkLabel3"
+        Me.LinkLabel3.Size = New System.Drawing.Size(174, 30)
+        Me.LinkLabel3.TabIndex = 3
+        Me.LinkLabel3.TabStop = True
+        Me.LinkLabel3.Text = " Borrower History"
+        Me.LinkLabel3.TextAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.LinkLabel3.UseCompatibleTextRendering = True
+        Me.LinkLabel3.VisitedLinkColor = System.Drawing.Color.Black
         '
         'FrmHistory
         '
@@ -278,4 +295,5 @@ Partial Class FrmHistory
     Friend WithEvents LinkLabel1 As LinkLabel
     Friend WithEvents LinkLabel2 As LinkLabel
     Friend WithEvents DisplayDatagrid As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents LinkLabel3 As LinkLabel
 End Class

@@ -150,7 +150,7 @@ Module mdlDatabaseRelated
         End With
         commandOne.ExecuteNonQuery()
 
-        Dim commandTwo As New SqlCommand("INSERT INTO tblBorrowerHistory (studentID, firstName, lastName, course, address, emailAddress) VALUES (@studentID, @firstName, @lastName, @course, @address, @emailAddress)", connection)
+        Dim commandTwo As New SqlCommand("INSERT INTO tblBorrowerHistory (studentID, firstName, lastName, course, address, emailAddress, dateCreated) VALUES (@studentID, @firstName, @lastName, @course, @address, @emailAddress, GETDATE())", connection)
         With commandTwo.Parameters
             .AddWithValue("@studentID", studentID)
             .AddWithValue("@firstName", firstname)
@@ -161,6 +161,7 @@ Module mdlDatabaseRelated
         End With
         commandTwo.ExecuteNonQuery()
         connection.Close()
+        DisplayBorrowerCreation(FrmHistory.DisplayDatagrid)
         MessageBox.Show("Borrower added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
@@ -449,6 +450,7 @@ Module mdlDatabaseRelated
             commandHistory.Parameters.AddWithValue("@studentID", FrmBorrowerSetup.TxtStudentID.Text)
             commandHistory.Parameters.AddWithValue("@isbn", FrmBorrowerSetup.TxtISBN.Text)
             commandHistory.ExecuteNonQuery()
+            DisplayBorrowHistory(FrmHistory.DisplayDatagrid)
 
             With FrmBorrowerSetup
                 .TxtStudentID.Text = ""
@@ -505,6 +507,8 @@ Module mdlDatabaseRelated
             MessageBox.Show("Book has been returned successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             connection.Close()
             DisplayAvailableBooks(FrmBorrowerSetup.DisplayDataGrid)
+            DisplayReturnHistory(FrmHistory.DisplayDatagrid)
+
             FrmReturnedSetup.TxtStudentID.Text = ""
             FrmReturnedSetup.TxtFirstname.Text = ""
             FrmReturnedSetup.TxtLastname.Text = ""
@@ -585,6 +589,16 @@ Module mdlDatabaseRelated
         Dim command As New SqlCommand("SELECT br.firstName, br.lastName, br.course, b.isbn, b.bookAuthor, b.bookTitle, rh.dateReturned
         FROM tblReturnHistory rh
         JOIN tblBooks b ON b.isbn = rh.isbn JOIN tblBorrowers br ON br.studentID = rh.studentID", connection)
+        adapter = New SqlDataAdapter(command)
+        dataset = New DataSet
+        adapter.Fill(dataset)
+        datagridview.DataSource = dataset.Tables(0)
+        connection.Close()
+    End Sub
+
+    Public Sub DisplayBorrowerCreation(datagridview As DataGridView)
+        Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
+        Dim command As New SqlCommand("SELECT * FROM tblBorrowerHistory", connection)
         adapter = New SqlDataAdapter(command)
         dataset = New DataSet
         adapter.Fill(dataset)
