@@ -1,4 +1,6 @@
 ﻿Public Class FrmReturnedSetup
+
+    Public result As DialogResult
     Private Sub FrmReturnedSetup_Load(sender As Object, e As EventArgs) Handles Me.Load
         DisplayBorrowedBooks(DisplayDataGrid)
         DisplayDataGrid.Columns("bookTitle").HeaderText = "Book Title"
@@ -31,10 +33,33 @@
             Exit Sub
         ElseIf String.IsNullOrEmpty(TxtISBN.Text) Then
             MessageBox.Show("Please select first a specific record below.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
+        ElseIf String.IsNullOrEmpty(TxtBookStatus.Text) Then
+            MessageBox.Show("Please select first the condition of the book", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Exit Sub
         End If
-        ReturnBook()
-            BooksAvailability("tblBooks", FrmDashboard.AvailableBooks, 1)
+
+        Select Case TxtBookStatus.SelectedIndex
+            Case 0
+                result = MessageBox.Show("Confirm return book", "Confirm Return", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                If result = DialogResult.Yes Then
+                    BookStatusNone()
+                End If
+            Case 2
+                result = MessageBox.Show("Report book as lost?", "Confirm Lost", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                If result = DialogResult.Yes Then
+                    BookStatusLost()
+                End If
+            Case 1
+                result = MessageBox.Show("Report book as damaged?", "Confirm damaged", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                If result = DialogResult.Yes Then
+                    BookStatusDamaged()
+                End If
+        End Select
+
+        BooksAvailability("tblBooks", FrmDashboard.AvailableBooks, 1)
         BooksAvailability("tblBooks", FrmDashboard.BorrowedBooks, 0)
         DisplayBorrowedBooks(DisplayDataGrid)
     End Sub
+
 End Class

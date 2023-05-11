@@ -7,6 +7,7 @@ Module mdlDatabaseRelated
     Dim adapter As SqlDataAdapter
     Dim dataset As DataSet
 
+
     'TAGA OPEN NG CONNECTION STRING
     Public Function OpenConnectionString(connectionString As String) As SqlConnection
         Dim connection As SqlConnection = Nothing
@@ -479,45 +480,93 @@ Module mdlDatabaseRelated
         datagrid.DataSource = dataTable
     End Sub
 
-    Public Sub ReturnBook()
-        Dim result As DialogResult = MessageBox.Show("Confirm return book", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If result = DialogResult.Yes Then
+    Public Sub BookStatusNone()
+        Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
 
-            Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
+        Dim updateCommand As New SqlCommand("UPDATE tblBooks SET availability = @availability WHERE isbn = @isbn", connection)
+        updateCommand.Parameters.AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
+        updateCommand.Parameters.AddWithValue("@availability", 1)
+        updateCommand.ExecuteNonQuery()
 
-            Dim updateCommand As New SqlCommand("UPDATE tblBooks SET availability = @availability WHERE isbn = @isbn", connection)
-            updateCommand.Parameters.AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
-            updateCommand.Parameters.AddWithValue("@availability", 1)
-            updateCommand.ExecuteNonQuery()
+        Dim deleteCommand As New SqlCommand("DELETE FROM tblBorrowedBooks WHERE studentID = @studentID AND isbn = @isbn", connection)
+        With deleteCommand.Parameters
+            .AddWithValue("@studentID", FrmReturnedSetup.TxtStudentID.Text)
+            .AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
+        End With
+        deleteCommand.ExecuteNonQuery()
 
-            Dim deleteCommand As New SqlCommand("DELETE FROM tblBorrowedBooks WHERE studentID = @studentID AND isbn = @isbn", connection)
-            With deleteCommand.Parameters
-                .AddWithValue("@studentID", FrmReturnedSetup.TxtStudentID.Text)
-                .AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
-            End With
-            deleteCommand.ExecuteNonQuery()
+        Dim insertCommand As New SqlCommand("INSERT INTO tblReturnHistory (studentID, isbn, dateReturned) VALUES (@id, @isbn, GETDATE())", connection)
+        With insertCommand.Parameters
+            .AddWithValue("@id", FrmReturnedSetup.TxtStudentID.Text)
+            .AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
+        End With
+        insertCommand.ExecuteNonQuery()
 
-            Dim insertCommand As New SqlCommand("INSERT INTO tblReturnHistory (studentID, isbn, dateReturned) VALUES (@id, @isbn, GETDATE())", connection)
-            With insertCommand.Parameters
-                .AddWithValue("@id", FrmReturnedSetup.TxtStudentID.Text)
-                .AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
-            End With
-            insertCommand.ExecuteNonQuery()
+        MessageBox.Show("Book has been returned successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        connection.Close()
+        DisplayAvailableBooks(FrmBorrowerSetup.DisplayDataGrid)
+        DisplayReturnHistory(FrmHistory.DisplayDatagrid)
 
-            MessageBox.Show("Book has been returned successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            connection.Close()
-            DisplayAvailableBooks(FrmBorrowerSetup.DisplayDataGrid)
-            DisplayReturnHistory(FrmHistory.DisplayDatagrid)
+        FrmReturnedSetup.TxtStudentID.Text = ""
+        FrmReturnedSetup.TxtFirstname.Text = ""
+        FrmReturnedSetup.TxtLastname.Text = ""
+        FrmReturnedSetup.TxtCourse.Text = ""
+        FrmReturnedSetup.TxtISBN.Text = ""
+        FrmReturnedSetup.TxtBookAuthor.Text = ""
+        FrmReturnedSetup.TxtBookTitle.Text = ""
+    End Sub
 
-            FrmReturnedSetup.TxtStudentID.Text = ""
-            FrmReturnedSetup.TxtFirstname.Text = ""
-            FrmReturnedSetup.TxtLastname.Text = ""
-            FrmReturnedSetup.TxtCourse.Text = ""
-            FrmReturnedSetup.TxtISBN.Text = ""
-            FrmReturnedSetup.TxtBookAuthor.Text = ""
-            FrmReturnedSetup.TxtBookTitle.Text = ""
-        End If
+    Public Sub BookStatusLost()
+        Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
 
+        Dim deleteCommand As New SqlCommand("DELETE FROM tblBorrowedBooks WHERE studentID = @studentID AND isbn = @isbn", connection)
+        With deleteCommand.Parameters
+            .AddWithValue("@studentID", FrmReturnedSetup.TxtStudentID.Text)
+            .AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
+        End With
+        deleteCommand.ExecuteNonQuery()
+
+        Dim insertCommand As New SqlCommand("INSERT INTO tblLostBooks (studentID, isbn, dateReturned) VALUES (@id, @isbn, GETDATE())", connection)
+        With insertCommand.Parameters
+            .AddWithValue("@id", FrmReturnedSetup.TxtStudentID.Text)
+            .AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
+        End With
+        insertCommand.ExecuteNonQuery()
+
+        Dim deleteBook As New SqlCommand("DELETE FROM tblBooks WHERE isbn = @isbn", connection)
+        deleteBook.Parameters.AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
+        deleteBook.ExecuteNonQuery()
+
+        MessageBox.Show("The book has been reported as lost. Please contact the library staff for assistance.", "Lost Book", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        connection.Close()
+        DisplayAvailableBooks(FrmBorrowerSetup.DisplayDataGrid)
+        RecordCount("tblBooks", FrmDashboard.BooksCount)
+    End Sub
+
+    Public Sub BookStatusDamaged()
+        Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
+
+        Dim deleteCommand As New SqlCommand("DELETE FROM tblBorrowedBooks WHERE studentID = @studentID AND isbn = @isbn", connection)
+        With deleteCommand.Parameters
+            .AddWithValue("@studentID", FrmReturnedSetup.TxtStudentID.Text)
+            .AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
+        End With
+        deleteCommand.ExecuteNonQuery()
+
+        Dim insertCommand As New SqlCommand("INSERT INTO tblDamagedBooks (studentID, isbn, dateReturned) VALUES (@id, @isbn, GETDATE())", connection)
+        With insertCommand.Parameters
+            .AddWithValue("@id", FrmReturnedSetup.TxtStudentID.Text)
+            .AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
+        End With
+        insertCommand.ExecuteNonQuery()
+
+        Dim deleteBook As New SqlCommand("DELETE FROM tblBooks WHERE isbn = @isbn", connection)
+        deleteBook.Parameters.AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
+        deleteBook.ExecuteNonQuery()
+        connection.Close()
+        MessageBox.Show("The book has been reported as damaged. Please contact the library staff for assistance.", "Lost Book", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        DisplayAvailableBooks(FrmBorrowerSetup.DisplayDataGrid)
+        RecordCount("tblBooks", FrmDashboard.BooksCount)
     End Sub
 #End Region
 
