@@ -39,6 +39,9 @@ Partial Class FrmHistory
         Me.LinkLabel2 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.DisplayDatagrid = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.LinkLabel4 = New System.Windows.Forms.LinkLabel()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TxtDisplay = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Guna2Panel1.SuspendLayout()
         Me.Guna2Panel9.SuspendLayout()
         Me.Guna2Panel8.SuspendLayout()
@@ -47,6 +50,8 @@ Partial Class FrmHistory
         '
         'Guna2Panel1
         '
+        Me.Guna2Panel1.Controls.Add(Me.Label2)
+        Me.Guna2Panel1.Controls.Add(Me.TxtDisplay)
         Me.Guna2Panel1.Controls.Add(Me.Label1)
         Me.Guna2Panel1.Controls.Add(Me.Guna2Panel2)
         Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top
@@ -138,6 +143,7 @@ Partial Class FrmHistory
         '
         'Guna2Panel8
         '
+        Me.Guna2Panel8.Controls.Add(Me.LinkLabel4)
         Me.Guna2Panel8.Controls.Add(Me.LinkLabel3)
         Me.Guna2Panel8.Controls.Add(Me.LinkLabel2)
         Me.Guna2Panel8.Controls.Add(Me.LinkLabel1)
@@ -159,7 +165,7 @@ Partial Class FrmHistory
         Me.LinkLabel3.Size = New System.Drawing.Size(174, 30)
         Me.LinkLabel3.TabIndex = 3
         Me.LinkLabel3.TabStop = True
-        Me.LinkLabel3.Text = " Borrower History"
+        Me.LinkLabel3.Text = " Borrower Created"
         Me.LinkLabel3.TextAlign = System.Drawing.ContentAlignment.BottomLeft
         Me.LinkLabel3.UseCompatibleTextRendering = True
         Me.LinkLabel3.VisitedLinkColor = System.Drawing.Color.Black
@@ -257,6 +263,49 @@ Partial Class FrmHistory
         Me.DisplayDatagrid.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.DisplayDatagrid.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
+        'LinkLabel4
+        '
+        Me.LinkLabel4.ActiveLinkColor = System.Drawing.Color.Black
+        Me.LinkLabel4.Dock = System.Windows.Forms.DockStyle.Left
+        Me.LinkLabel4.Font = New System.Drawing.Font("Segoe UI", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabel4.LinkArea = New System.Windows.Forms.LinkArea(1, 16)
+        Me.LinkLabel4.LinkColor = System.Drawing.Color.Black
+        Me.LinkLabel4.Location = New System.Drawing.Point(462, 0)
+        Me.LinkLabel4.Name = "LinkLabel4"
+        Me.LinkLabel4.Size = New System.Drawing.Size(174, 30)
+        Me.LinkLabel4.TabIndex = 4
+        Me.LinkLabel4.TabStop = True
+        Me.LinkLabel4.Text = " Deleted Borrower"
+        Me.LinkLabel4.TextAlign = System.Drawing.ContentAlignment.BottomLeft
+        Me.LinkLabel4.UseCompatibleTextRendering = True
+        Me.LinkLabel4.VisitedLinkColor = System.Drawing.Color.Black
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(1002, 63)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(80, 28)
+        Me.Label2.TabIndex = 4
+        Me.Label2.Text = "Display:"
+        '
+        'TxtDisplay
+        '
+        Me.TxtDisplay.BackColor = System.Drawing.Color.Transparent
+        Me.TxtDisplay.BorderColor = System.Drawing.Color.Black
+        Me.TxtDisplay.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.TxtDisplay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.TxtDisplay.FocusedColor = System.Drawing.Color.Black
+        Me.TxtDisplay.FocusedState.BorderColor = System.Drawing.Color.Black
+        Me.TxtDisplay.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.TxtDisplay.ForeColor = System.Drawing.Color.Black
+        Me.TxtDisplay.ItemHeight = 30
+        Me.TxtDisplay.Items.AddRange(New Object() {"Borrow History", "Return History", "Borrower Created", "Deleted Borrower", "Librarian Created", "Deleted Librarian", "Book Imports", "Book Deleted", "Overdue Books"})
+        Me.TxtDisplay.Location = New System.Drawing.Point(1100, 54)
+        Me.TxtDisplay.Name = "TxtDisplay"
+        Me.TxtDisplay.Size = New System.Drawing.Size(187, 36)
+        Me.TxtDisplay.TabIndex = 3
+        '
         'FrmHistory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 28.0!)
@@ -277,6 +326,7 @@ Partial Class FrmHistory
         Me.Name = "FrmHistory"
         Me.Text = "FrmBorrowHistory"
         Me.Guna2Panel1.ResumeLayout(False)
+        Me.Guna2Panel1.PerformLayout()
         Me.Guna2Panel9.ResumeLayout(False)
         Me.Guna2Panel8.ResumeLayout(False)
         CType(Me.DisplayDatagrid, System.ComponentModel.ISupportInitialize).EndInit()
@@ -298,4 +348,7 @@ Partial Class FrmHistory
     Friend WithEvents LinkLabel2 As LinkLabel
     Friend WithEvents DisplayDatagrid As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents LinkLabel3 As LinkLabel
+    Friend WithEvents LinkLabel4 As LinkLabel
+    Friend WithEvents Label2 As Label
+    Friend WithEvents TxtDisplay As Guna.UI2.WinForms.Guna2ComboBox
 End Class

@@ -1,5 +1,4 @@
 ﻿Imports System.Data.SqlClient
-Imports System.Web
 
 Module mdlDatabaseRelated
 
@@ -199,13 +198,26 @@ Module mdlDatabaseRelated
         MsgBox("Updated Successfully")
     End Sub
 
-    Public Sub DeleteBorrower(ByVal studentID As Integer)
+    Public Sub DeleteBorrower(ByVal studentID As Integer, firstname As String, lastname As String, course As String, address As String, email As String)
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
         Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If result = DialogResult.Yes Then
+
             Dim command As New SqlCommand("DELETE FROM tblBorrowers WHERE studentID = @studentID", connection)
             command.Parameters.AddWithValue("@studentID", studentID)
             command.ExecuteNonQuery()
+
+            Dim insertCommand As New SqlCommand("INSERT INTO tblDeletedBorrower (studentID, firstName, lastName, course, address, emailAddress, dateDeleted) VALUES (@studentID, @firstName, @lastName, @course, @address, @emailAddress, GETDATE())", connection)
+            With insertCommand.Parameters
+                .AddWithValue("@studentID", studentID)
+                .AddWithValue("@firstName", firstname)
+                .AddWithValue("@lastName", lastname)
+                .AddWithValue("@course", course)
+                .AddWithValue("@address", address)
+                .AddWithValue("@emailAddress", email)
+            End With
+            insertCommand.ExecuteNonQuery()
+
             connection.Close()
             MessageBox.Show("Record deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
@@ -224,6 +236,7 @@ Module mdlDatabaseRelated
             FrmAddLibrarian.TxtEmail.Text = ""
             Exit Sub
         Else
+
             Dim command As New SqlCommand("INSERT INTO tblLibrarians (firstName, lastName, address, emailAddress, password, question, answer) 
             VALUES (@firstname, @lastname, @address, @email, @password, @question, @answer)", connection)
             With command.Parameters
@@ -236,19 +249,40 @@ Module mdlDatabaseRelated
                 .AddWithValue("@answer", answer)
             End With
             command.ExecuteNonQuery()
+
+            Dim commandOne As New SqlCommand("INSERT INTO tblLibrarianHistory (firstName, lastName, address, emailAddress, dateCreated) VALUES (@firstname, @lastname, @address, @email, GETDATE())", connection)
+            With commandOne.Parameters
+                .AddWithValue("@firstname", firstname)
+                .AddWithValue("@lastname", lastname)
+                .AddWithValue("@address", address)
+                .AddWithValue("@email", email)
+            End With
+            commandOne.ExecuteNonQuery()
+
             MessageBox.Show("Account created successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
         connection.Close()
     End Sub
 
-    Public Sub DeleteLibrarian(ByVal id As Integer)
+    Public Sub DeleteLibrarian(ByVal id As Integer, firstname As String, lastname As String, address As String, email As String)
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
-        Dim command As New SqlCommand("DELETE FROM tblLibrarians WHERE id = @id", connection)
-        command.Parameters.AddWithValue("@id", id)
 
         Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If result = DialogResult.Yes Then
+
+            Dim command As New SqlCommand("DELETE FROM tblLibrarians WHERE id = @id", connection)
+            command.Parameters.AddWithValue("@id", id)
             command.ExecuteNonQuery()
+
+            Dim commandOne As New SqlCommand("INSERT INTO tblDeletedLibrarian (firstName, lastName, address, emailAddress, dateDeleted) VALUES (@firstName, @lastName, @address, @email, GETDATE())", connection)
+            With commandOne.Parameters
+                .AddWithValue("@firstName", firstname)
+                .AddWithValue("@lastName", lastname)
+                .AddWithValue("@address", address)
+                .AddWithValue("@email", email)
+            End With
+            commandOne.ExecuteNonQuery()
+
             MessageBox.Show("Record deleted successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             connection.Close()
             FrmLibrarianInfo.Close()
@@ -541,6 +575,14 @@ Module mdlDatabaseRelated
         connection.Close()
         DisplayAvailableBooks(FrmBorrowerSetup.DisplayDataGrid)
         RecordCount("tblBooks", FrmDashboard.BooksCount)
+
+        FrmReturnedSetup.TxtStudentID.Text = ""
+        FrmReturnedSetup.TxtFirstname.Text = ""
+        FrmReturnedSetup.TxtLastname.Text = ""
+        FrmReturnedSetup.TxtCourse.Text = ""
+        FrmReturnedSetup.TxtISBN.Text = ""
+        FrmReturnedSetup.TxtBookAuthor.Text = ""
+        FrmReturnedSetup.TxtBookTitle.Text = ""
     End Sub
 
     Public Sub BookStatusDamaged()
@@ -567,6 +609,14 @@ Module mdlDatabaseRelated
         MessageBox.Show("The book has been reported as damaged. Please contact the library staff for assistance.", "Lost Book", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         DisplayAvailableBooks(FrmBorrowerSetup.DisplayDataGrid)
         RecordCount("tblBooks", FrmDashboard.BooksCount)
+
+        FrmReturnedSetup.TxtStudentID.Text = ""
+        FrmReturnedSetup.TxtFirstname.Text = ""
+        FrmReturnedSetup.TxtLastname.Text = ""
+        FrmReturnedSetup.TxtCourse.Text = ""
+        FrmReturnedSetup.TxtISBN.Text = ""
+        FrmReturnedSetup.TxtBookAuthor.Text = ""
+        FrmReturnedSetup.TxtBookTitle.Text = ""
     End Sub
 #End Region
 
@@ -621,6 +671,27 @@ Module mdlDatabaseRelated
 
 
 #Region "HISTORY FORM METHODS"
+
+    Public Sub Auditing()
+        Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
+
+        Select Case FrmHistory.TxtDisplay.SelectedIndex
+            Case 0
+                DisplayBorrowHistory(FrmHistory.DisplayDatagrid)
+            Case 1
+                DisplayReturnHistory(FrmHistory.DisplayDatagrid)
+            Case 2
+                DisplayBorrowerCreation(FrmHistory.DisplayDatagrid)
+            Case 3
+                DisplayDeletedBorrowers(FrmHistory.DisplayDatagrid)
+            Case 4
+                DisplayLibrarianCreation(FrmHistory.DisplayDatagrid)
+            Case 5
+                DisplayDeletedLibrarian(FrmHistory.DisplayDatagrid)
+        End Select
+    End Sub
+
+
     Public Sub DisplayBorrowHistory(datagridview As DataGridView)
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
         Dim command As New SqlCommand("SELECT b.isbn, b.bookTitle, b.bookAuthor, bo.studentID, bo.firstName, bo.lastName, bo.course, br.dateBorrowed, br.dueDate 
@@ -654,6 +725,37 @@ Module mdlDatabaseRelated
         datagridview.DataSource = dataset.Tables(0)
         connection.Close()
     End Sub
+
+    Public Sub DisplayDeletedBorrowers(datagridview As DataGridView)
+        Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
+        Dim command As New SqlCommand("SELECT * FROM tblDeletedBorrower", connection)
+        adapter = New SqlDataAdapter(command)
+        dataset = New DataSet
+        adapter.Fill(dataset)
+        datagridview.DataSource = dataset.Tables(0)
+        connection.Close()
+    End Sub
+
+    Public Sub DisplayLibrarianCreation(datagridview As DataGridView)
+        Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
+        Dim command As New SqlCommand("SELECT * FROM tblLibrarianHistory", connection)
+        adapter = New SqlDataAdapter(command)
+        dataset = New DataSet
+        adapter.Fill(dataset)
+        datagridview.DataSource = dataset.Tables(0)
+        connection.Close()
+    End Sub
+
+    Public Sub DisplayDeletedLibrarian(datagridview As DataGridView)
+        Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
+        Dim command As New SqlCommand("SELECT * FROM tblDeletedLibrarian", connection)
+        adapter = New SqlDataAdapter(command)
+        dataset = New DataSet
+        adapter.Fill(dataset)
+        datagridview.DataSource = dataset.Tables(0)
+        connection.Close()
+    End Sub
+
 #End Region
 
 

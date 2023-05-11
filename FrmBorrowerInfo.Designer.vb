@@ -317,7 +317,6 @@ Partial Class FrmBorrowerInfo
         Me.TxtFirstName.DisabledState.ForeColor = System.Drawing.Color.Black
         Me.TxtFirstName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TxtFirstName.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TxtFirstName.Enabled = False
         Me.TxtFirstName.FocusedState.BorderColor = System.Drawing.Color.Black
         Me.TxtFirstName.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtFirstName.ForeColor = System.Drawing.Color.Black
@@ -351,7 +350,6 @@ Partial Class FrmBorrowerInfo
         Me.TxtStudentID.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TxtStudentID.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.TxtStudentID.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TxtStudentID.Enabled = False
         Me.TxtStudentID.FocusedState.BorderColor = System.Drawing.Color.Black
         Me.TxtStudentID.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtStudentID.ForeColor = System.Drawing.Color.Black
@@ -362,6 +360,7 @@ Partial Class FrmBorrowerInfo
         Me.TxtStudentID.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TxtStudentID.PlaceholderForeColor = System.Drawing.Color.DimGray
         Me.TxtStudentID.PlaceholderText = "Student ID"
+        Me.TxtStudentID.ReadOnly = True
         Me.TxtStudentID.SelectedText = ""
         Me.TxtStudentID.Size = New System.Drawing.Size(342, 43)
         Me.TxtStudentID.TabIndex = 30

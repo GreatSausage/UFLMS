@@ -41,7 +41,7 @@
 
     Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles BtnDelete.Click
         Dim studentID As Integer = CInt(TxtStudentID.Text)
-        DeleteBorrower(studentID)
+        DeleteBorrower(studentID, TxtFirstName.Text, TxtLastName.Text, TxtCourse.Text, TxtAddress.Text, TxtEmail.Text)
         Me.Close()
         RecordCount("tblBorrowers", FrmDashboard.BorrowersCount)
     End Sub
