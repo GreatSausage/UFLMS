@@ -5,6 +5,14 @@ Module mdlDatabaseRelated
     Dim adapter As SqlDataAdapter
     Dim dataset As DataSet
 
+    Public Sub DisplayFormPanel(frm As Form, displayPanel As Panel)
+        frm.TopLevel = False
+        frm.FormBorderStyle = FormBorderStyle.None
+        frm.Dock = DockStyle.Fill
+        displayPanel.Controls.Clear()
+        displayPanel.Controls.Add(frm)
+        frm.Show()
+    End Sub
 
     'TAGA OPEN NG CONNECTION STRING
     Public Function OpenConnectionString(connectionString As String) As SqlConnection
@@ -106,12 +114,36 @@ Module mdlDatabaseRelated
         labelCount.Text = count.ToString()
     End Sub
 
+    Public Sub Books(label As Label)
+        Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
+        Dim command As New SqlCommand("SELECT COUNT(*) FROM tblBooks", connection)
+        Dim count As Integer = CInt(command.ExecuteScalar())
+        connection.Close()
+        label.Text = count.ToString()
+    End Sub
+
     Public Sub DisplayOverdue()
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
         Dim command As New SqlCommand("SELECT COUNT(*) FROM tblBorrowedBooks WHERE dueDate < GETDATE()", connection)
         Dim count As Integer = CInt(command.ExecuteScalar())
         connection.Close()
         FrmDashboard.OverdueCount.Text = count.ToString()
+    End Sub
+
+    Public Sub DisplayBorrowedBooks()
+        Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
+        Dim command As New SqlCommand("SELECT COUNT(*) FROM tblBooks WHERE availability = 'No'", connection)
+        Dim count As Integer = CInt(command.ExecuteScalar())
+        connection.Close()
+        FrmDashboard.BorrowedBooks.Text = count.ToString()
+    End Sub
+
+    Public Sub DisplayAvailableBooks()
+        Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
+        Dim command As New SqlCommand("SELECT COUNT(*) FROM tblBooks WHERE availability = 'Yes'", connection)
+        Dim count As Integer = CInt(command.ExecuteScalar())
+        connection.Close()
+        FrmDashboard.AvailableBooks.Text = count.ToString()
     End Sub
 
 #End Region
@@ -225,6 +257,7 @@ Module mdlDatabaseRelated
 
             connection.Close()
             MessageBox.Show("Record deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            DisplayDeletedBorrowers(FrmHistory.DisplayDatagrid)
         End If
     End Sub
 #End Region
@@ -264,6 +297,7 @@ Module mdlDatabaseRelated
             commandOne.ExecuteNonQuery()
 
             MessageBox.Show("Account created successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            DisplayLibrarianCreation(FrmHistory.DisplayDatagrid)
         End If
         connection.Close()
     End Sub
@@ -289,6 +323,7 @@ Module mdlDatabaseRelated
 
             MessageBox.Show("Record deleted successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             connection.Close()
+            DisplayDeletedLibrarian(FrmHistory.DisplayDatagrid)
             FrmLibrarianInfo.Close()
         End If
     End Sub
@@ -344,10 +379,11 @@ Module mdlDatabaseRelated
             Case "ALL"
                 commandText = commandText
             Case "AVAILABLE"
-                commandText += " WHERE availability = 1"
+                commandText += " WHERE availability = 'Yes'"
             Case "UNAVAILABLE"
-                commandText += " WHERE availability = 0"
+                commandText += " WHERE availability = 'No'"
         End Select
+
         Dim command As New SqlCommand(commandText, connection)
         adapter = New SqlDataAdapter(command)
         dataset = New DataSet
@@ -356,12 +392,37 @@ Module mdlDatabaseRelated
         connection.Close()
     End Sub
 
-    Public Sub BooksAvailability(tableName As String, labelCount As Label, availability As Integer)
+    Public Sub DisplayDamagedAndLost()
+        Select Case FrmManageBooks.TxtIsAvailable.SelectedIndex
+            Case 3
+                DisplayDamagedBooks(FrmManageBooks.DisplayDatagrid)
+            Case 4
+                DisplayLostBooks(FrmManageBooks.DisplayDatagrid)
+        End Select
+    End Sub
+
+    Public Sub DisplayDamagedBooks(datagridview As DataGridView)
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
-        Dim command As New SqlCommand("SELECT COUNT(*) FROM " & tableName & " WHERE availability = " & availability & "", connection)
-        Dim count As Integer = CInt(command.ExecuteScalar())
+        Dim command As New SqlCommand("SELECT br.firstName, br.lastName, br.course, b.isbn, b.bookAuthor, b.bookTitle, rh.dateReturned
+        FROM tblDamagedBooks rh
+        JOIN tblBooks b ON b.isbn = rh.isbn JOIN tblBorrowers br ON br.studentID = rh.studentID", connection)
+        adapter = New SqlDataAdapter(command)
+        dataset = New DataSet
+        adapter.Fill(dataset)
+        datagridview.DataSource = dataset.Tables(0)
         connection.Close()
-        labelCount.Text = count.ToString()
+    End Sub
+
+    Public Sub DisplayLostBooks(datagridview As DataGridView)
+        Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
+        Dim command As New SqlCommand("SELECT br.firstName, br.lastName, br.course, b.isbn, b.bookAuthor, b.bookTitle, rh.dateReturned
+        FROM tblLostBooks rh
+        JOIN tblBooks b ON b.isbn = rh.isbn JOIN tblBorrowers br ON br.studentID = rh.studentID", connection)
+        adapter = New SqlDataAdapter(command)
+        dataset = New DataSet
+        adapter.Fill(dataset)
+        datagridview.DataSource = dataset.Tables(0)
+        connection.Close()
     End Sub
 
     Public Sub SearchBooks(dataGridView As DataGridView, searchKeyword As String)
@@ -384,12 +445,11 @@ Module mdlDatabaseRelated
     Public Sub ImportBooks(isbn As String, author As String, title As String)
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
 
-        Dim command As New SqlCommand("INSERT INTO tblBooks (isbn, bookAuthor, bookTitle, availability, bookGenre) VALUES (@isbn, @bookAuthor, @bookTitle, @availability, @bookGenre)", connection)
+        Dim command As New SqlCommand("INSERT INTO tblBooks (isbn, bookAuthor, bookTitle, availability, bookGenre, status) VALUES (@isbn, @bookAuthor, @bookTitle, 'Yes', @bookGenre, NULL)", connection)
         With command.Parameters
             .AddWithValue("@isbn", isbn)
             .AddWithValue("@bookAuthor", author)
             .AddWithValue("@bookTitle", title)
-            .AddWithValue("@availability", 1)
         End With
         Select Case FrmAddBook.TxtGenre.Text
             Case "Computer Studies"
@@ -415,6 +475,7 @@ Module mdlDatabaseRelated
 
         connection.Close()
         MessageBox.Show("Book has been added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        DisplayBookCreation(FrmHistory.DisplayDatagrid)
         FrmAddBook.Close()
     End Sub
 
@@ -437,7 +498,8 @@ Module mdlDatabaseRelated
 
             connection.Close()
             MessageBox.Show("Record deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            BooksAvailability("tblBooks", FrmDashboard.AvailableBooks, 1)
+            DisplayDeletedBooks(FrmHistory.DisplayDatagrid)
+            DisplayAvailableBooks()
         End If
     End Sub
 
@@ -448,7 +510,7 @@ Module mdlDatabaseRelated
 
     Public Sub DisplayAvailableBooks(dataGridView As DataGridView)
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
-        Dim command As New SqlCommand("SELECT isbn, bookAuthor, bookTitle FROM tblBooks WHERE availability = 1", connection)
+        Dim command As New SqlCommand("SELECT isbn, bookAuthor, bookTitle FROM tblBooks WHERE availability = 'Yes'", connection)
         adapter = New SqlDataAdapter(command)
         dataset = New DataSet
         adapter.Fill(dataset)
@@ -496,9 +558,8 @@ Module mdlDatabaseRelated
             borrowedBooksCommand.Parameters.AddWithValue("@isbn", FrmBorrowerSetup.TxtISBN.Text)
             borrowedBooksCommand.ExecuteNonQuery()
 
-            Dim updateBookCommand As New SqlCommand("UPDATE tblBooks SET availability = @availability WHERE isbn = @isbn", connection)
+            Dim updateBookCommand As New SqlCommand("UPDATE tblBooks SET availability = 'No' WHERE isbn = @isbn", connection)
             updateBookCommand.Parameters.AddWithValue("@isbn", FrmBorrowerSetup.TxtISBN.Text)
-            updateBookCommand.Parameters.AddWithValue("@availability", 0)
             updateBookCommand.ExecuteNonQuery()
             MessageBox.Show("Book has been borrowed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
@@ -537,9 +598,8 @@ Module mdlDatabaseRelated
     Public Sub BookStatusNone()
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
 
-        Dim updateCommand As New SqlCommand("UPDATE tblBooks SET availability = @availability WHERE isbn = @isbn", connection)
+        Dim updateCommand As New SqlCommand("UPDATE tblBooks SET availability = 'Yes' WHERE isbn = @isbn", connection)
         updateCommand.Parameters.AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
-        updateCommand.Parameters.AddWithValue("@availability", 1)
         updateCommand.ExecuteNonQuery()
 
         Dim deleteCommand As New SqlCommand("DELETE FROM tblBorrowedBooks WHERE studentID = @studentID AND isbn = @isbn", connection)
@@ -588,14 +648,16 @@ Module mdlDatabaseRelated
         End With
         insertCommand.ExecuteNonQuery()
 
-        Dim deleteBook As New SqlCommand("DELETE FROM tblBooks WHERE isbn = @isbn", connection)
-        deleteBook.Parameters.AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
-        deleteBook.ExecuteNonQuery()
+        Dim updateStatus As New SqlCommand("UPDATE tblBooks SET status = 'Lost', availability = 'Lost' WHERE isbn = @isbn", connection)
+        updateStatus.Parameters.AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
+        updateStatus.ExecuteNonQuery()
 
         MessageBox.Show("The book has been reported as lost. Please contact the library staff for assistance.", "Lost Book", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         connection.Close()
         DisplayAvailableBooks(FrmBorrowerSetup.DisplayDataGrid)
         RecordCount("tblBooks", FrmDashboard.BooksCount)
+        DisplayLostBooks(FrmManageBooks.DisplayDatagrid)
+        DisplayBorrowedBooks()
 
         FrmReturnedSetup.TxtStudentID.Text = ""
         FrmReturnedSetup.TxtFirstname.Text = ""
@@ -623,13 +685,16 @@ Module mdlDatabaseRelated
         End With
         insertCommand.ExecuteNonQuery()
 
-        Dim deleteBook As New SqlCommand("DELETE FROM tblBooks WHERE isbn = @isbn", connection)
-        deleteBook.Parameters.AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
-        deleteBook.ExecuteNonQuery()
+        Dim updateStatus As New SqlCommand("UPDATE tblBooks SET status = 'Damaged', availability = 'Damaged' WHERE isbn = @isbn", connection)
+        updateStatus.Parameters.AddWithValue("@isbn", FrmReturnedSetup.TxtISBN.Text)
+        updateStatus.ExecuteNonQuery()
+
         connection.Close()
         MessageBox.Show("The book has been reported as damaged. Please contact the library staff for assistance.", "Lost Book", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         DisplayAvailableBooks(FrmBorrowerSetup.DisplayDataGrid)
         RecordCount("tblBooks", FrmDashboard.BooksCount)
+        DisplayDamagedBooks(FrmManageBooks.DisplayDatagrid)
+        DisplayBorrowedBooks()
 
         FrmReturnedSetup.TxtStudentID.Text = ""
         FrmReturnedSetup.TxtFirstname.Text = ""
@@ -715,7 +780,6 @@ Module mdlDatabaseRelated
                 DisplayOverdueBooks(FrmHistory.DisplayDatagrid)
         End Select
     End Sub
-
 
     Public Sub DisplayBorrowHistory(datagridview As DataGridView)
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
@@ -805,7 +869,7 @@ Module mdlDatabaseRelated
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
         Dim command As New SqlCommand("SELECT b.isbn, b.bookTitle, b.bookAuthor, bo.studentID, bo.firstName, bo.lastName, bo.course, br.dateBorrowed, br.dueDate 
         FROM tblBorrowedBooks br
-        JOIN tblBooks b ON br.isbn = b.isbn Join tblBorrowers bo ON br.studentID = bo.studentID WHERE dueDate < GETDATE()", connection)
+        JOIN tblBooks b ON br.isbn = b.isbn JOIN tblBorrowers bo ON br.studentID = bo.studentID WHERE dueDate < GETDATE()", connection)
         adapter = New SqlDataAdapter(command)
         dataset = New DataSet
         adapter.Fill(dataset)
@@ -813,6 +877,49 @@ Module mdlDatabaseRelated
         connection.Close()
     End Sub
 
+    Public Sub DeleteHistory()
+        Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete all records?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If result = DialogResult.Yes Then
+
+            Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
+            Dim command As String = "DELETE FROM"
+
+            Select Case FrmHistory.TxtDisplay.SelectedIndex
+                Case 0
+                    command += " tblBorrowHistory"
+                Case 1
+                    command += " tblReturnHistory"
+                Case 2
+                    command += " tblBorrowerHistory"
+                Case 3
+                    command += " tblDeletedBorrower"
+                Case 4
+                    command += " tblLibrarianHistory"
+                Case 5
+                    command += " tblDeletedLibrarian"
+                Case 6
+                    command += " tblBookHistory"
+                Case 7
+                    command += " tblDeletedBooks"
+                Case 8
+                    FrmHistory.BtnDeleteAll.Visible = False
+            End Select
+
+            Dim commandOne As New SqlCommand(command, connection)
+            commandOne.ExecuteNonQuery()
+            MessageBox.Show("Records deleted successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            connection.Close()
+            DisplayBorrowHistory(FrmHistory.DisplayDatagrid)
+            DisplayReturnHistory(FrmHistory.DisplayDatagrid)
+            DisplayBorrowerCreation(FrmHistory.DisplayDatagrid)
+            DisplayDeletedBorrowers(FrmHistory.DisplayDatagrid)
+            DisplayLibrarianCreation(FrmHistory.DisplayDatagrid)
+            DisplayDeletedLibrarian(FrmHistory.DisplayDatagrid)
+            DisplayBookCreation(FrmHistory.DisplayDatagrid)
+            DisplayDeletedBooks(FrmHistory.DisplayDatagrid)
+            DisplayOverdueBooks(FrmHistory.DisplayDatagrid)
+        End If
+    End Sub
 #End Region
 
 
@@ -877,7 +984,6 @@ Module mdlDatabaseRelated
     End Sub
 
 #End Region
-
 
     Public Sub DisplayAllBorrowersAndLibrarins(dataGridView As DataGridView, tablename As String)
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")

@@ -12,7 +12,8 @@
     End Sub
 
     Private Sub TxtIsAvailable_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles TxtIsAvailable.SelectedIndexChanged
-        DisplayByAvailability(TxtIsAvailable.Text.ToString, DisplayDatagrid)
+        DisplayByAvailability(TxtIsAvailable.SelectedItem.ToString, DisplayDatagrid)
+        DisplayDamagedAndLost()
     End Sub
 
     Private Sub DisplayDatagrid_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DisplayDatagrid.CellClick

@@ -58,9 +58,9 @@
         End Select
         RecordCount("tblDamagedBooks", FrmDashboard.DamagedCount)
         RecordCount("tblLostBooks", FrmDashboard.LostCount)
-        BooksAvailability("tblBooks", FrmDashboard.AvailableBooks, 1)
-        BooksAvailability("tblBooks", FrmDashboard.BorrowedBooks, 0)
+        DisplayAvailableBooks()
         DisplayBorrowedBooks(DisplayDataGrid)
+        DisplayBorrowedBooks()
     End Sub
 
 End Class

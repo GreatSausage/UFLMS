@@ -207,7 +207,6 @@
     <Compile Include="frmSignInScreen.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="mdlFunctions.vb" />
     <Compile Include="mdlDatabaseRelated.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

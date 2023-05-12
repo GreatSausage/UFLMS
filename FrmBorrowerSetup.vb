@@ -33,8 +33,8 @@
         End If
         BookExistence(TxtISBN.Text)
         DisplayAvailableBooks(DisplayDataGrid)
-        BooksAvailability("tblBooks", FrmDashboard.AvailableBooks, 1)
-        BooksAvailability("tblBooks", FrmDashboard.BorrowedBooks, 0)
+        DisplayAvailableBooks()
+        DisplayBorrowedBooks()
         DisplayBorrowedBooks(FrmReturnedSetup.DisplayDataGrid)
     End Sub
 

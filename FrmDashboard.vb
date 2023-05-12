@@ -3,9 +3,9 @@
         Timer1.Enabled = True
         RecordCount("tblBorrowers", BorrowersCount)
         RecordCount("tblLibrarians", LibrariansCount)
-        RecordCount("tblBooks", BooksCount)
-        BooksAvailability("tblBooks", AvailableBooks, 1)
-        BooksAvailability("tblBooks", BorrowedBooks, 0)
+        DisplayAvailableBooks()
+        Books(BooksCount)
+        DisplayBorrowedBooks()
         RecordCount("tblDamagedBooks", DamagedCount)
         RecordCount("tblLostBooks", LostCount)
         DisplayOverdue()

@@ -16,4 +16,8 @@
     Private Sub TxtDisplay_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TxtDisplay.SelectedIndexChanged
         Auditing()
     End Sub
+
+    Private Sub BtnDeleteAll_Click(sender As Object, e As EventArgs) Handles BtnDeleteAll.Click
+        DeleteHistory()
+    End Sub
 End Class

@@ -18,7 +18,7 @@
         ImportBooks(TxtIsbn.Text, TxtAuthor.Text, TxtTitle.Text)
         DisplayByAvailability("ALL", FrmManageBooks.DisplayDatagrid)
         RecordCount("tblBooks", FrmDashboard.BooksCount)
-        BooksAvailability("tblBooks", FrmDashboard.AvailableBooks, 1)
+        DisplayAvailableBooks()
     End Sub
 
     Private Sub TxtIsbn_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtIsbn.KeyPress
