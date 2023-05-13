@@ -15,6 +15,9 @@
 
     Private Sub TxtDisplay_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TxtDisplay.SelectedIndexChanged
         Auditing()
+        If TxtDisplay.SelectedIndex = 8 Then
+            BtnDeleteAll.Visible = False
+        End If
     End Sub
 
     Private Sub BtnDeleteAll_Click(sender As Object, e As EventArgs) Handles BtnDeleteAll.Click

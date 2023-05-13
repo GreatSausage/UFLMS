@@ -493,7 +493,7 @@ Partial Class FrmBorrowerSetup
         Me.TxtStudentID.Name = "TxtStudentID"
         Me.TxtStudentID.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.TxtStudentID.PlaceholderForeColor = System.Drawing.Color.DimGray
-        Me.TxtStudentID.PlaceholderText = "Student ID"
+        Me.TxtStudentID.PlaceholderText = "(Enter borrower's ID and press tab)"
         Me.TxtStudentID.SelectedText = ""
         Me.TxtStudentID.Size = New System.Drawing.Size(616, 42)
         Me.TxtStudentID.TabIndex = 4

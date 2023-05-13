@@ -255,7 +255,7 @@ Partial Class FrmManageBooks
         Me.TxtIsAvailable.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.TxtIsAvailable.ForeColor = System.Drawing.Color.Black
         Me.TxtIsAvailable.ItemHeight = 30
-        Me.TxtIsAvailable.Items.AddRange(New Object() {"ALL", "AVAILABLE", "UNAVAILABLE", "DAMAGED", "LOST"})
+        Me.TxtIsAvailable.Items.AddRange(New Object() {"ALL", "AVAILABLE", "UNAVAILABLE", "DAMAGED", "LOST", "OVERDUE"})
         Me.TxtIsAvailable.Location = New System.Drawing.Point(813, 55)
         Me.TxtIsAvailable.Name = "TxtIsAvailable"
         Me.TxtIsAvailable.Size = New System.Drawing.Size(187, 36)

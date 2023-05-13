@@ -76,7 +76,7 @@ Partial Class FrmHistory
         Me.TxtDisplay.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.TxtDisplay.ForeColor = System.Drawing.Color.Black
         Me.TxtDisplay.ItemHeight = 30
-        Me.TxtDisplay.Items.AddRange(New Object() {"Borrow History", "Return History", "Borrower Created", "Deleted Borrower", "Librarian Created", "Deleted Librarian", "Book Imports", "Book Deleted", "Overdue Books"})
+        Me.TxtDisplay.Items.AddRange(New Object() {"Borrow History", "Return History", "Borrower Created", "Deleted Borrower", "Librarian Created", "Deleted Librarian", "Book Imports", "Book Deleted"})
         Me.TxtDisplay.Location = New System.Drawing.Point(1100, 54)
         Me.TxtDisplay.Name = "TxtDisplay"
         Me.TxtDisplay.Size = New System.Drawing.Size(187, 36)

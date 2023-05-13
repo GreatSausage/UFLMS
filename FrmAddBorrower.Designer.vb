@@ -46,7 +46,9 @@ Partial Class FrmAddBorrower
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Guna2Panel8 = New Guna.UI2.WinForms.Guna2Panel()
         Me.LabelClose = New System.Windows.Forms.LinkLabel()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Guna2Panel1.SuspendLayout()
+        Me.Guna2Panel5.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -219,6 +221,7 @@ Partial Class FrmAddBorrower
         '
         'Guna2Panel5
         '
+        Me.Guna2Panel5.Controls.Add(Me.Label2)
         Me.Guna2Panel5.Dock = System.Windows.Forms.DockStyle.Top
         Me.Guna2Panel5.Location = New System.Drawing.Point(12, 189)
         Me.Guna2Panel5.Name = "Guna2Panel5"
@@ -355,6 +358,17 @@ Partial Class FrmAddBorrower
         Me.LabelClose.TabStop = True
         Me.LabelClose.Text = "[close]"
         '
+        'Label2
+        '
+        Me.Label2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(0, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(330, 20)
+        Me.Label2.TabIndex = 51
+        Me.Label2.Text = "Course:"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'FrmAddBorrower
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -372,6 +386,7 @@ Partial Class FrmAddBorrower
         Me.Name = "FrmAddBorrower"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Guna2Panel1.ResumeLayout(False)
+        Me.Guna2Panel5.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -399,4 +414,5 @@ Partial Class FrmAddBorrower
     Friend WithEvents Guna2Panel7 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents TxtAddress As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2Panel6 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents Label2 As Label
 End Class

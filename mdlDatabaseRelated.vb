@@ -1,5 +1,4 @@
 ﻿Imports System.Data.SqlClient
-
 Module mdlDatabaseRelated
 
     Dim adapter As SqlDataAdapter
@@ -268,6 +267,7 @@ Module mdlDatabaseRelated
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
         Dim checkCommand As New SqlCommand("SELECT COUNT(*) FROM tblLibrarians WHERE emailAddress = @email", connection)
         checkCommand.Parameters.AddWithValue("@email", email)
+
         If CInt(checkCommand.ExecuteScalar()) > 0 Then
             MessageBox.Show("Email already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             FrmAddLibrarian.TxtEmail.Text = ""
@@ -396,9 +396,43 @@ Module mdlDatabaseRelated
         Select Case FrmManageBooks.TxtIsAvailable.SelectedIndex
             Case 3
                 DisplayDamagedBooks(FrmManageBooks.DisplayDatagrid)
+                With FrmManageBooks.DisplayDatagrid
+                    .Columns("firstName").HeaderText = "Firstname"
+                    .Columns("lastName").HeaderText = "Lastname"
+                    .Columns("course").HeaderText = "Course"
+                    .Columns("dateReturned").HeaderText = "Date Returned"
+                End With
             Case 4
                 DisplayLostBooks(FrmManageBooks.DisplayDatagrid)
+                With FrmManageBooks.DisplayDatagrid
+                    .Columns("firstName").HeaderText = "Firstname"
+                    .Columns("lastName").HeaderText = "Lastname"
+                    .Columns("course").HeaderText = "Course"
+                    .Columns("dateReturned").HeaderText = "Date Returned"
+                End With
+            Case 5
+                DisplayOverdueBooks(FrmManageBooks.DisplayDatagrid)
+                With FrmManageBooks.DisplayDatagrid
+                    .Columns("ISBN").Visible = False
+                    .Columns("studentID").Visible = False
+                    .Columns("firstName").HeaderText = "Firstname"
+                    .Columns("lastName").HeaderText = "Lastname"
+                    .Columns("course").HeaderText = "Course"
+                    .Columns("dateBorrowed").HeaderText = "Date Borrowed"
+                    .Columns("dueDate").HeaderText = "Due Date"
+                End With
         End Select
+    End Sub
+    Public Sub DisplayOverdueBooks(datagridview As DataGridView)
+        Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
+        Dim command As New SqlCommand("SELECT b.isbn, b.bookTitle, b.bookAuthor, bo.studentID, bo.firstName, bo.lastName, bo.course, br.dateBorrowed, br.dueDate 
+        FROM tblBorrowedBooks br
+        JOIN tblBooks b ON br.isbn = b.isbn JOIN tblBorrowers bo ON br.studentID = bo.studentID WHERE dueDate < GETDATE()", connection)
+        adapter = New SqlDataAdapter(command)
+        dataset = New DataSet
+        adapter.Fill(dataset)
+        datagridview.DataSource = dataset.Tables(0)
+        connection.Close()
     End Sub
 
     Public Sub DisplayDamagedBooks(datagridview As DataGridView)
@@ -764,20 +798,33 @@ Module mdlDatabaseRelated
                 DisplayBorrowHistory(FrmHistory.DisplayDatagrid)
             Case 1
                 DisplayReturnHistory(FrmHistory.DisplayDatagrid)
+                FrmHistory.DisplayDatagrid.Columns("dateReturned").HeaderText = "Date Returned"
             Case 2
                 DisplayBorrowerCreation(FrmHistory.DisplayDatagrid)
+                FrmHistory.DisplayDatagrid.Columns("Id").Visible = False
+                FrmHistory.DisplayDatagrid.Columns("studentID").HeaderText = "Student ID"
+                FrmHistory.DisplayDatagrid.Columns("Address").HeaderText = "Address"
+                FrmHistory.DisplayDatagrid.Columns("emailAddress").HeaderText = "Email Address"
+                FrmHistory.DisplayDatagrid.Columns("dateCreated").HeaderText = "Date Created"
             Case 3
                 DisplayDeletedBorrowers(FrmHistory.DisplayDatagrid)
+                FrmHistory.DisplayDatagrid.Columns("dateDeleted").HeaderText = "Date Deleted"
             Case 4
                 DisplayLibrarianCreation(FrmHistory.DisplayDatagrid)
+                FrmHistory.DisplayDatagrid.Columns("dateCreated").HeaderText = "Date Created"
             Case 5
                 DisplayDeletedLibrarian(FrmHistory.DisplayDatagrid)
+                FrmHistory.DisplayDatagrid.Columns("dateDeleted").HeaderText = "Date Deleted"
             Case 6
                 DisplayBookCreation(FrmHistory.DisplayDatagrid)
+                FrmHistory.DisplayDatagrid.Columns("Id").Visible = False
+                FrmHistory.DisplayDatagrid.Columns("isbn").HeaderText = "ISBN"
+                FrmHistory.DisplayDatagrid.Columns("bookAuthor").HeaderText = "Book Author"
+                FrmHistory.DisplayDatagrid.Columns("bookTitle").HeaderText = "Book Title"
+                FrmHistory.DisplayDatagrid.Columns("dateCreated").HeaderText = "Date Created"
             Case 7
                 DisplayDeletedBooks(FrmHistory.DisplayDatagrid)
-            Case 8
-                DisplayOverdueBooks(FrmHistory.DisplayDatagrid)
+                FrmHistory.DisplayDatagrid.Columns("dateDeleted").HeaderText = "Date Deleted"
         End Select
     End Sub
 
@@ -865,18 +912,6 @@ Module mdlDatabaseRelated
         connection.Close()
     End Sub
 
-    Public Sub DisplayOverdueBooks(datagridview As DataGridView)
-        Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
-        Dim command As New SqlCommand("SELECT b.isbn, b.bookTitle, b.bookAuthor, bo.studentID, bo.firstName, bo.lastName, bo.course, br.dateBorrowed, br.dueDate 
-        FROM tblBorrowedBooks br
-        JOIN tblBooks b ON br.isbn = b.isbn JOIN tblBorrowers bo ON br.studentID = bo.studentID WHERE dueDate < GETDATE()", connection)
-        adapter = New SqlDataAdapter(command)
-        dataset = New DataSet
-        adapter.Fill(dataset)
-        datagridview.DataSource = dataset.Tables(0)
-        connection.Close()
-    End Sub
-
     Public Sub DeleteHistory()
         Dim result As DialogResult = MessageBox.Show("Are you sure you want to delete all records?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If result = DialogResult.Yes Then
@@ -917,7 +952,6 @@ Module mdlDatabaseRelated
             DisplayDeletedLibrarian(FrmHistory.DisplayDatagrid)
             DisplayBookCreation(FrmHistory.DisplayDatagrid)
             DisplayDeletedBooks(FrmHistory.DisplayDatagrid)
-            DisplayOverdueBooks(FrmHistory.DisplayDatagrid)
         End If
     End Sub
 #End Region

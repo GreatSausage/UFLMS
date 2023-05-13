@@ -31,6 +31,18 @@ Partial Class FrmAddLibrarian
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.TxtAnswer = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2Panel10 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.TxtQuestion = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.Guna2Panel7 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TxtConfirmPass = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2Panel6 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.TxtPassword = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2Panel5 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.TxtEmail = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2Panel9 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.TxtAddress = New Guna.UI2.WinForms.Guna2TextBox()
         Me.BtnCreate = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2Panel4 = New Guna.UI2.WinForms.Guna2Panel()
         Me.TxtLastname = New Guna.UI2.WinForms.Guna2TextBox()
@@ -39,18 +51,8 @@ Partial Class FrmAddLibrarian
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Panel8 = New Guna.UI2.WinForms.Guna2Panel()
         Me.LabelClose = New System.Windows.Forms.LinkLabel()
-        Me.TxtAddress = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.Guna2Panel9 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.TxtAnswer = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.Guna2Panel10 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.TxtQuestion = New Guna.UI2.WinForms.Guna2ComboBox()
-        Me.Guna2Panel7 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.TxtConfirmPass = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.Guna2Panel6 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.TxtPassword = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.Guna2Panel5 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.TxtEmail = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel1.SuspendLayout()
+        Me.Guna2Panel7.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2BorderlessForm1
@@ -130,6 +132,201 @@ Partial Class FrmAddLibrarian
         Me.Guna2Panel1.Name = "Guna2Panel1"
         Me.Guna2Panel1.Size = New System.Drawing.Size(406, 572)
         Me.Guna2Panel1.TabIndex = 19
+        '
+        'TxtAnswer
+        '
+        Me.TxtAnswer.BorderColor = System.Drawing.Color.Black
+        Me.TxtAnswer.BorderRadius = 5
+        Me.TxtAnswer.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TxtAnswer.DefaultText = ""
+        Me.TxtAnswer.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TxtAnswer.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TxtAnswer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TxtAnswer.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TxtAnswer.Dock = System.Windows.Forms.DockStyle.Top
+        Me.TxtAnswer.FocusedState.BorderColor = System.Drawing.Color.Black
+        Me.TxtAnswer.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtAnswer.ForeColor = System.Drawing.Color.Black
+        Me.TxtAnswer.HoverState.BorderColor = System.Drawing.Color.Black
+        Me.TxtAnswer.Location = New System.Drawing.Point(0, 454)
+        Me.TxtAnswer.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.TxtAnswer.Name = "TxtAnswer"
+        Me.TxtAnswer.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TxtAnswer.PlaceholderForeColor = System.Drawing.Color.DimGray
+        Me.TxtAnswer.PlaceholderText = "Your Answer"
+        Me.TxtAnswer.SelectedText = ""
+        Me.TxtAnswer.Size = New System.Drawing.Size(406, 43)
+        Me.TxtAnswer.TabIndex = 94
+        '
+        'Guna2Panel10
+        '
+        Me.Guna2Panel10.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Guna2Panel10.Location = New System.Drawing.Point(0, 434)
+        Me.Guna2Panel10.Name = "Guna2Panel10"
+        Me.Guna2Panel10.Size = New System.Drawing.Size(406, 20)
+        Me.Guna2Panel10.TabIndex = 93
+        '
+        'TxtQuestion
+        '
+        Me.TxtQuestion.BackColor = System.Drawing.Color.Transparent
+        Me.TxtQuestion.BorderColor = System.Drawing.Color.Black
+        Me.TxtQuestion.BorderRadius = 5
+        Me.TxtQuestion.Dock = System.Windows.Forms.DockStyle.Top
+        Me.TxtQuestion.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.TxtQuestion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.TxtQuestion.FocusedColor = System.Drawing.Color.Black
+        Me.TxtQuestion.FocusedState.BorderColor = System.Drawing.Color.Black
+        Me.TxtQuestion.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.TxtQuestion.ForeColor = System.Drawing.Color.Black
+        Me.TxtQuestion.ItemHeight = 30
+        Me.TxtQuestion.Items.AddRange(New Object() {"What is your mother's maiden name?", "What is your favorite food?", "What is your favorite book or movie?"})
+        Me.TxtQuestion.Location = New System.Drawing.Point(0, 398)
+        Me.TxtQuestion.Name = "TxtQuestion"
+        Me.TxtQuestion.Size = New System.Drawing.Size(406, 36)
+        Me.TxtQuestion.TabIndex = 92
+        '
+        'Guna2Panel7
+        '
+        Me.Guna2Panel7.Controls.Add(Me.Label2)
+        Me.Guna2Panel7.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Guna2Panel7.Location = New System.Drawing.Point(0, 378)
+        Me.Guna2Panel7.Name = "Guna2Panel7"
+        Me.Guna2Panel7.Size = New System.Drawing.Size(406, 20)
+        Me.Guna2Panel7.TabIndex = 91
+        '
+        'Label2
+        '
+        Me.Label2.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(0, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(291, 20)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "Choose your question:"
+        '
+        'TxtConfirmPass
+        '
+        Me.TxtConfirmPass.BorderColor = System.Drawing.Color.Black
+        Me.TxtConfirmPass.BorderRadius = 5
+        Me.TxtConfirmPass.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TxtConfirmPass.DefaultText = ""
+        Me.TxtConfirmPass.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TxtConfirmPass.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TxtConfirmPass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TxtConfirmPass.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TxtConfirmPass.Dock = System.Windows.Forms.DockStyle.Top
+        Me.TxtConfirmPass.FocusedState.BorderColor = System.Drawing.Color.Black
+        Me.TxtConfirmPass.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtConfirmPass.ForeColor = System.Drawing.Color.Black
+        Me.TxtConfirmPass.HoverState.BorderColor = System.Drawing.Color.Black
+        Me.TxtConfirmPass.Location = New System.Drawing.Point(0, 335)
+        Me.TxtConfirmPass.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.TxtConfirmPass.Name = "TxtConfirmPass"
+        Me.TxtConfirmPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
+        Me.TxtConfirmPass.PlaceholderForeColor = System.Drawing.Color.DimGray
+        Me.TxtConfirmPass.PlaceholderText = "Confirm Password"
+        Me.TxtConfirmPass.SelectedText = ""
+        Me.TxtConfirmPass.Size = New System.Drawing.Size(406, 43)
+        Me.TxtConfirmPass.TabIndex = 90
+        '
+        'Guna2Panel6
+        '
+        Me.Guna2Panel6.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Guna2Panel6.Location = New System.Drawing.Point(0, 315)
+        Me.Guna2Panel6.Name = "Guna2Panel6"
+        Me.Guna2Panel6.Size = New System.Drawing.Size(406, 20)
+        Me.Guna2Panel6.TabIndex = 89
+        '
+        'TxtPassword
+        '
+        Me.TxtPassword.BorderColor = System.Drawing.Color.Black
+        Me.TxtPassword.BorderRadius = 5
+        Me.TxtPassword.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TxtPassword.DefaultText = ""
+        Me.TxtPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TxtPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TxtPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TxtPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TxtPassword.Dock = System.Windows.Forms.DockStyle.Top
+        Me.TxtPassword.FocusedState.BorderColor = System.Drawing.Color.Black
+        Me.TxtPassword.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtPassword.ForeColor = System.Drawing.Color.Black
+        Me.TxtPassword.HoverState.BorderColor = System.Drawing.Color.Black
+        Me.TxtPassword.Location = New System.Drawing.Point(0, 272)
+        Me.TxtPassword.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.TxtPassword.Name = "TxtPassword"
+        Me.TxtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
+        Me.TxtPassword.PlaceholderForeColor = System.Drawing.Color.DimGray
+        Me.TxtPassword.PlaceholderText = "Password"
+        Me.TxtPassword.SelectedText = ""
+        Me.TxtPassword.Size = New System.Drawing.Size(406, 43)
+        Me.TxtPassword.TabIndex = 88
+        '
+        'Guna2Panel5
+        '
+        Me.Guna2Panel5.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Guna2Panel5.Location = New System.Drawing.Point(0, 252)
+        Me.Guna2Panel5.Name = "Guna2Panel5"
+        Me.Guna2Panel5.Size = New System.Drawing.Size(406, 20)
+        Me.Guna2Panel5.TabIndex = 87
+        '
+        'TxtEmail
+        '
+        Me.TxtEmail.BorderColor = System.Drawing.Color.Black
+        Me.TxtEmail.BorderRadius = 5
+        Me.TxtEmail.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TxtEmail.DefaultText = ""
+        Me.TxtEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TxtEmail.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TxtEmail.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TxtEmail.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TxtEmail.Dock = System.Windows.Forms.DockStyle.Top
+        Me.TxtEmail.FocusedState.BorderColor = System.Drawing.Color.Black
+        Me.TxtEmail.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtEmail.ForeColor = System.Drawing.Color.Black
+        Me.TxtEmail.HoverState.BorderColor = System.Drawing.Color.Black
+        Me.TxtEmail.Location = New System.Drawing.Point(0, 209)
+        Me.TxtEmail.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.TxtEmail.Name = "TxtEmail"
+        Me.TxtEmail.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TxtEmail.PlaceholderForeColor = System.Drawing.Color.DimGray
+        Me.TxtEmail.PlaceholderText = "Email"
+        Me.TxtEmail.SelectedText = ""
+        Me.TxtEmail.Size = New System.Drawing.Size(406, 43)
+        Me.TxtEmail.TabIndex = 86
+        '
+        'Guna2Panel9
+        '
+        Me.Guna2Panel9.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Guna2Panel9.Location = New System.Drawing.Point(0, 189)
+        Me.Guna2Panel9.Name = "Guna2Panel9"
+        Me.Guna2Panel9.Size = New System.Drawing.Size(406, 20)
+        Me.Guna2Panel9.TabIndex = 61
+        '
+        'TxtAddress
+        '
+        Me.TxtAddress.BorderColor = System.Drawing.Color.Black
+        Me.TxtAddress.BorderRadius = 5
+        Me.TxtAddress.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.TxtAddress.DefaultText = ""
+        Me.TxtAddress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.TxtAddress.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.TxtAddress.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TxtAddress.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.TxtAddress.Dock = System.Windows.Forms.DockStyle.Top
+        Me.TxtAddress.FocusedState.BorderColor = System.Drawing.Color.Black
+        Me.TxtAddress.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtAddress.ForeColor = System.Drawing.Color.Black
+        Me.TxtAddress.HoverState.BorderColor = System.Drawing.Color.Black
+        Me.TxtAddress.Location = New System.Drawing.Point(0, 146)
+        Me.TxtAddress.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
+        Me.TxtAddress.Name = "TxtAddress"
+        Me.TxtAddress.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.TxtAddress.PlaceholderForeColor = System.Drawing.Color.DimGray
+        Me.TxtAddress.PlaceholderText = "Address"
+        Me.TxtAddress.SelectedText = ""
+        Me.TxtAddress.Size = New System.Drawing.Size(406, 43)
+        Me.TxtAddress.TabIndex = 60
         '
         'BtnCreate
         '
@@ -244,190 +441,6 @@ Partial Class FrmAddLibrarian
         Me.LabelClose.TabStop = True
         Me.LabelClose.Text = "[close]"
         '
-        'TxtAddress
-        '
-        Me.TxtAddress.BorderColor = System.Drawing.Color.Black
-        Me.TxtAddress.BorderRadius = 5
-        Me.TxtAddress.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TxtAddress.DefaultText = ""
-        Me.TxtAddress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TxtAddress.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TxtAddress.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TxtAddress.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TxtAddress.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TxtAddress.FocusedState.BorderColor = System.Drawing.Color.Black
-        Me.TxtAddress.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtAddress.ForeColor = System.Drawing.Color.Black
-        Me.TxtAddress.HoverState.BorderColor = System.Drawing.Color.Black
-        Me.TxtAddress.Location = New System.Drawing.Point(0, 146)
-        Me.TxtAddress.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.TxtAddress.Name = "TxtAddress"
-        Me.TxtAddress.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TxtAddress.PlaceholderForeColor = System.Drawing.Color.DimGray
-        Me.TxtAddress.PlaceholderText = "Address"
-        Me.TxtAddress.SelectedText = ""
-        Me.TxtAddress.Size = New System.Drawing.Size(406, 43)
-        Me.TxtAddress.TabIndex = 60
-        '
-        'Guna2Panel9
-        '
-        Me.Guna2Panel9.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Guna2Panel9.Location = New System.Drawing.Point(0, 189)
-        Me.Guna2Panel9.Name = "Guna2Panel9"
-        Me.Guna2Panel9.Size = New System.Drawing.Size(406, 20)
-        Me.Guna2Panel9.TabIndex = 61
-        '
-        'TxtAnswer
-        '
-        Me.TxtAnswer.BorderColor = System.Drawing.Color.Black
-        Me.TxtAnswer.BorderRadius = 5
-        Me.TxtAnswer.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TxtAnswer.DefaultText = ""
-        Me.TxtAnswer.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TxtAnswer.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TxtAnswer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TxtAnswer.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TxtAnswer.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TxtAnswer.FocusedState.BorderColor = System.Drawing.Color.Black
-        Me.TxtAnswer.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtAnswer.ForeColor = System.Drawing.Color.Black
-        Me.TxtAnswer.HoverState.BorderColor = System.Drawing.Color.Black
-        Me.TxtAnswer.Location = New System.Drawing.Point(0, 454)
-        Me.TxtAnswer.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.TxtAnswer.Name = "TxtAnswer"
-        Me.TxtAnswer.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TxtAnswer.PlaceholderForeColor = System.Drawing.Color.DimGray
-        Me.TxtAnswer.PlaceholderText = "Your Answer"
-        Me.TxtAnswer.SelectedText = ""
-        Me.TxtAnswer.Size = New System.Drawing.Size(406, 43)
-        Me.TxtAnswer.TabIndex = 94
-        '
-        'Guna2Panel10
-        '
-        Me.Guna2Panel10.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Guna2Panel10.Location = New System.Drawing.Point(0, 434)
-        Me.Guna2Panel10.Name = "Guna2Panel10"
-        Me.Guna2Panel10.Size = New System.Drawing.Size(406, 20)
-        Me.Guna2Panel10.TabIndex = 93
-        '
-        'TxtQuestion
-        '
-        Me.TxtQuestion.BackColor = System.Drawing.Color.Transparent
-        Me.TxtQuestion.BorderColor = System.Drawing.Color.Black
-        Me.TxtQuestion.BorderRadius = 5
-        Me.TxtQuestion.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TxtQuestion.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.TxtQuestion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.TxtQuestion.FocusedColor = System.Drawing.Color.Black
-        Me.TxtQuestion.FocusedState.BorderColor = System.Drawing.Color.Black
-        Me.TxtQuestion.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.TxtQuestion.ForeColor = System.Drawing.Color.Black
-        Me.TxtQuestion.ItemHeight = 30
-        Me.TxtQuestion.Items.AddRange(New Object() {"What is your mother's maiden name?", "What is your favorite food?", "What is your favorite book or movie?"})
-        Me.TxtQuestion.Location = New System.Drawing.Point(0, 398)
-        Me.TxtQuestion.Name = "TxtQuestion"
-        Me.TxtQuestion.Size = New System.Drawing.Size(406, 36)
-        Me.TxtQuestion.TabIndex = 92
-        '
-        'Guna2Panel7
-        '
-        Me.Guna2Panel7.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Guna2Panel7.Location = New System.Drawing.Point(0, 378)
-        Me.Guna2Panel7.Name = "Guna2Panel7"
-        Me.Guna2Panel7.Size = New System.Drawing.Size(406, 20)
-        Me.Guna2Panel7.TabIndex = 91
-        '
-        'TxtConfirmPass
-        '
-        Me.TxtConfirmPass.BorderColor = System.Drawing.Color.Black
-        Me.TxtConfirmPass.BorderRadius = 5
-        Me.TxtConfirmPass.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TxtConfirmPass.DefaultText = ""
-        Me.TxtConfirmPass.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TxtConfirmPass.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TxtConfirmPass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TxtConfirmPass.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TxtConfirmPass.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TxtConfirmPass.FocusedState.BorderColor = System.Drawing.Color.Black
-        Me.TxtConfirmPass.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtConfirmPass.ForeColor = System.Drawing.Color.Black
-        Me.TxtConfirmPass.HoverState.BorderColor = System.Drawing.Color.Black
-        Me.TxtConfirmPass.Location = New System.Drawing.Point(0, 335)
-        Me.TxtConfirmPass.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.TxtConfirmPass.Name = "TxtConfirmPass"
-        Me.TxtConfirmPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
-        Me.TxtConfirmPass.PlaceholderForeColor = System.Drawing.Color.DimGray
-        Me.TxtConfirmPass.PlaceholderText = "Confirm Password"
-        Me.TxtConfirmPass.SelectedText = ""
-        Me.TxtConfirmPass.Size = New System.Drawing.Size(406, 43)
-        Me.TxtConfirmPass.TabIndex = 90
-        '
-        'Guna2Panel6
-        '
-        Me.Guna2Panel6.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Guna2Panel6.Location = New System.Drawing.Point(0, 315)
-        Me.Guna2Panel6.Name = "Guna2Panel6"
-        Me.Guna2Panel6.Size = New System.Drawing.Size(406, 20)
-        Me.Guna2Panel6.TabIndex = 89
-        '
-        'TxtPassword
-        '
-        Me.TxtPassword.BorderColor = System.Drawing.Color.Black
-        Me.TxtPassword.BorderRadius = 5
-        Me.TxtPassword.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TxtPassword.DefaultText = ""
-        Me.TxtPassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TxtPassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TxtPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TxtPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TxtPassword.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TxtPassword.FocusedState.BorderColor = System.Drawing.Color.Black
-        Me.TxtPassword.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtPassword.ForeColor = System.Drawing.Color.Black
-        Me.TxtPassword.HoverState.BorderColor = System.Drawing.Color.Black
-        Me.TxtPassword.Location = New System.Drawing.Point(0, 272)
-        Me.TxtPassword.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.TxtPassword.Name = "TxtPassword"
-        Me.TxtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
-        Me.TxtPassword.PlaceholderForeColor = System.Drawing.Color.DimGray
-        Me.TxtPassword.PlaceholderText = "Password"
-        Me.TxtPassword.SelectedText = ""
-        Me.TxtPassword.Size = New System.Drawing.Size(406, 43)
-        Me.TxtPassword.TabIndex = 88
-        '
-        'Guna2Panel5
-        '
-        Me.Guna2Panel5.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Guna2Panel5.Location = New System.Drawing.Point(0, 252)
-        Me.Guna2Panel5.Name = "Guna2Panel5"
-        Me.Guna2Panel5.Size = New System.Drawing.Size(406, 20)
-        Me.Guna2Panel5.TabIndex = 87
-        '
-        'TxtEmail
-        '
-        Me.TxtEmail.BorderColor = System.Drawing.Color.Black
-        Me.TxtEmail.BorderRadius = 5
-        Me.TxtEmail.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.TxtEmail.DefaultText = ""
-        Me.TxtEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.TxtEmail.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.TxtEmail.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TxtEmail.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.TxtEmail.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TxtEmail.FocusedState.BorderColor = System.Drawing.Color.Black
-        Me.TxtEmail.Font = New System.Drawing.Font("Segoe UI", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtEmail.ForeColor = System.Drawing.Color.Black
-        Me.TxtEmail.HoverState.BorderColor = System.Drawing.Color.Black
-        Me.TxtEmail.Location = New System.Drawing.Point(0, 209)
-        Me.TxtEmail.Margin = New System.Windows.Forms.Padding(3, 5, 3, 5)
-        Me.TxtEmail.Name = "TxtEmail"
-        Me.TxtEmail.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.TxtEmail.PlaceholderForeColor = System.Drawing.Color.DimGray
-        Me.TxtEmail.PlaceholderText = "Email"
-        Me.TxtEmail.SelectedText = ""
-        Me.TxtEmail.Size = New System.Drawing.Size(406, 43)
-        Me.TxtEmail.TabIndex = 86
-        '
         'FrmAddLibrarian
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -447,6 +460,7 @@ Partial Class FrmAddLibrarian
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmAddLibrarian"
         Me.Guna2Panel1.ResumeLayout(False)
+        Me.Guna2Panel7.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -478,4 +492,5 @@ Partial Class FrmAddLibrarian
     Friend WithEvents TxtEmail As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2Panel9 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents TxtAddress As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Label2 As Label
 End Class
