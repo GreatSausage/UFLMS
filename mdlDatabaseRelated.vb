@@ -1,4 +1,6 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Net.Mail
+
 Module mdlDatabaseRelated
 
     Dim adapter As SqlDataAdapter
@@ -199,6 +201,12 @@ Module mdlDatabaseRelated
         connection.Close()
         DisplayBorrowerCreation(FrmHistory.DisplayDatagrid)
         MessageBox.Show("Borrower added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        FrmAddBorrower.TxtFirstName.Clear()
+        FrmAddBorrower.TxtLastName.Clear()
+        FrmAddBorrower.TxtCourse.SelectedIndex = -1
+        FrmAddBorrower.TxtAddress.Clear()
+        FrmAddBorrower.TxtEmail.Clear()
+        FrmAddBorrower.TxtStudentID.Clear()
     End Sub
 
     Public Sub SearchBorrowers(dataGridView As DataGridView, searchKeyword As String)
@@ -986,10 +994,11 @@ Module mdlDatabaseRelated
         End If
     End Sub
 
-    Public Sub SaveNewPassword()
+    Public Sub SaveNewPassword(email As String)
         Dim connection As SqlConnection = OpenConnectionString("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Clifford\source\repos\UFLMS\dbUsers.mdf;Integrated Security=True")
         Dim commandLibrarian As New SqlCommand("SELECT COUNT(*) FROM tblLibrarians WHERE emailAddress = @emailAddress AND question = @question AND answer = @answer", connection)
         Dim commandAdmin As New SqlCommand("SELECT COUNT(*) FROM tblAdmin WHERE emailAddress = @emailAddress AND question = @question AND answer = @answer", connection)
+
         commandLibrarian.Parameters.AddWithValue("@emailAddress", FrmForgotPassword.TxtEmail.Text)
         commandLibrarian.Parameters.AddWithValue("@question", FrmForgotPassword.TxtQuestion.Text)
         commandLibrarian.Parameters.AddWithValue("@answer", FrmForgotPassword.TxtAnswer.Text)
@@ -1002,16 +1011,46 @@ Module mdlDatabaseRelated
             FrmForgotPassword.Close()
             FrmMain.Show()
 
-            Dim commandOne As New SqlCommand("SELECT * FROM tblLibrarians WHERE emailAddress = @emailAddress", connection)
-            commandOne.Parameters.AddWithValue("@emailAddress", FrmForgotPassword.TxtEmail.Text)
+            Dim commandOne As New SqlCommand("SELECT * FROM tblAdmin WHERE emailAddress = @emailAddress", connection)
+            commandOne.Parameters.AddWithValue("@emailAddress", email)
 
             Dim adapter As New SqlDataAdapter(commandOne)
             Dim datatable As New DataTable()
             adapter.Fill(datatable)
 
+            With FrmAccountSettings
+                .TxtID.Text = datatable.Rows(0)("id")
+                .TxtFirstname.Text = datatable.Rows(0)("firstName").ToString()
+                .TxtLastname.Text = datatable.Rows(0)("lastName").ToString()
+                .TxtAddress.Text = datatable.Rows(0)("address").ToString()
+                .TxtEmail.Text = datatable.Rows(0)("emailAddress").ToString()
+                .TxtPassword.Text = datatable.Rows(0)("password").ToString
+                .TxtQuestion.Text = datatable.Rows(0)("question").ToString()
+                .TxtAnswer.Text = datatable.Rows(0)("answer").ToString()
+            End With
+
         ElseIf CInt(commandAdmin.ExecuteScalar()) > 0 Then
             FrmForgotPassword.Close()
             FrmMain.Show()
+
+            Dim commandOne As New SqlCommand("SELECT * FROM tblAdmin WHERE emailAddress = @emailAddress", connection)
+            commandOne.Parameters.AddWithValue("@emailAddress", email)
+
+            Dim adapter As New SqlDataAdapter(commandOne)
+            Dim datatable As New DataTable()
+            adapter.Fill(datatable)
+
+            With FrmAccountSettings
+                .TxtID.Text = datatable.Rows(0)("id")
+                .TxtFirstname.Text = datatable.Rows(0)("firstName").ToString()
+                .TxtLastname.Text = datatable.Rows(0)("lastName").ToString()
+                .TxtAddress.Text = datatable.Rows(0)("address").ToString()
+                .TxtEmail.Text = datatable.Rows(0)("emailAddress").ToString()
+                .TxtPassword.Text = datatable.Rows(0)("password").ToString
+                .TxtQuestion.Text = datatable.Rows(0)("question").ToString()
+                .TxtAnswer.Text = datatable.Rows(0)("answer").ToString()
+            End With
+
         Else
             MessageBox.Show("Wrong answer", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If

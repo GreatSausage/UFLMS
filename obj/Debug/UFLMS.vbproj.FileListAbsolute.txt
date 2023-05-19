@@ -10,10 +10,7 @@ C:\Users\Clifford\source\repos\UFLMS\obj\Debug\UFLMS.vbproj.CoreCompileInputs.ca
 C:\Users\Clifford\source\repos\UFLMS\obj\Debug\UFLMS.exe
 C:\Users\Clifford\source\repos\UFLMS\obj\Debug\UFLMS.xml
 C:\Users\Clifford\source\repos\UFLMS\obj\Debug\UFLMS.pdb
-C:\Users\Clifford\source\repos\UFLMS\bin\Debug\MetroFramework.dll
 C:\Users\Clifford\source\repos\UFLMS\obj\Debug\UFLMS.vbproj.CopyComplete
-C:\Users\Clifford\source\repos\UFLMS\bin\Debug\MetroFramework.Design.dll
-C:\Users\Clifford\source\repos\UFLMS\bin\Debug\MetroFramework.Fonts.dll
 C:\Users\Clifford\source\repos\UFLMS\bin\Debug\dbUsers.mdf
 C:\Users\Clifford\source\repos\UFLMS\bin\Debug\dbUsers_log.ldf
 C:\Users\Clifford\source\repos\UFLMS\bin\Debug\Guna.UI2.dll

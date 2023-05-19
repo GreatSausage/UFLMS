@@ -2,6 +2,7 @@
 Imports System.Web.UI.WebControls
 
 Public Class FrmAddBorrower
+
     Private Sub LabelClose_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LabelClose.LinkClicked
         Me.Close()
         TxtStudentID.Clear()
@@ -53,7 +54,7 @@ Public Class FrmAddBorrower
 
         ElseIf TxtStudentID.Text.Length >= 7 AndAlso Not Char.IsControl(e.KeyChar) Then
             e.Handled = True
-            End If
+        End If
     End Sub
 
     Private Sub TxtFirstName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtFirstName.KeyPress
